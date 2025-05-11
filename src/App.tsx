@@ -27,6 +27,8 @@ import BooksPage from "./pages/Test/Books";
 import SectionsPage from "./pages/Test/Sections";
 import ResultsPage from "./pages/Test/Results";
 import TestsPage from "./pages/Test/Tests";
+import PathsPage from "./pages/sidebar/paths";
+import FirmsPage from "./pages/sidebar/firms";
 
 export default function App() {
   return (
@@ -58,28 +60,34 @@ export default function App() {
 
             <Route index path="/rate" element={<RatePage />} />
 
+           
+            <Route index path="/paths" element={<PathsPage />} />
+            <Route index path="/firms-mchj" element={<FirmsPage />} />
+            <Route index path="/firms-yatt" element={<FirmsPage />} />
+
+
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
 
             {/* Forms */}
-            <Route path="/form-elements" element={<FormElements />} />
+            {/* <Route path="/form-elements" element={<FormElements />} /> */}
 
             {/* Tables */}
-            <Route path="/basic-tables" element={<BasicTables />} />
+            {/* <Route path="/basic-tables" element={<BasicTables />} /> */}
 
             {/* Ui Elements */}
-            <Route path="/alerts" element={<Alerts />} />
+            {/* <Route path="/alerts" element={<Alerts />} />
             <Route path="/avatars" element={<Avatars />} />
             <Route path="/badge" element={<Badges />} />
             <Route path="/buttons" element={<Buttons />} />
-            <Route path="/images" element={<Images />} />
+            <Route path="/images" element={<Images />} /> */}
             {/* <Route path="/videos" element={<Videos />} /> */}
 
             {/* Charts */}
-            <Route path="/line-chart" element={<LineChart />} />
-            <Route path="/bar-chart" element={<BarChart />} />
+            {/* <Route path="/line-chart" element={<LineChart />} />
+            <Route path="/bar-chart" element={<BarChart />} /> */}
           </Route>
 
           {/* Auth Layout */}

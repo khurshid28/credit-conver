@@ -11,7 +11,8 @@ import Badge from "../ui/badge/Badge";
 interface Product {
   id: number; // Unique identifier for each product
   name: string; // Product name
-  variants: string; // Number of variants (e.g., "1 Variant", "2 Variants")
+  firma: string; 
+  firma_type : "MCHJ" | "YATT",
   credit_type: string; // Category of the product
   price: string; // Price of the product (as a string with currency symbol)
   // status: string; // Status of the product
@@ -23,26 +24,29 @@ interface Product {
 const tableData: Product[] = [
   {
     id: 1,
-    name: "MacBook Pro 13”",
-    variants: "2 Variants",
-    credit_type: "Mikrozaym",
-    price: "21 460 000",
+    name: "Pul mablag'i",
+    firma: "Turon",
+    firma_type : "MCHJ",
+    credit_type: "Tijorat",
+    price: "250 000 000",
     status: "Finished",
     image: "/images/product/product-01.jpg", // Replace with actual image URL
   },
   {
     id: 2,
-    name: "Apple Watch Ultra",
-    variants: "1 Variant",
-    credit_type: "Mikrozaym",
-    price: "1 320 000",
+    name: "Pul mablag'i",
+    firma: "Evos",
+    firma_type : "MCHJ",
+    credit_type: "Tijorat",
+    price: "390 000 000",
     status: "Pending",
     image: "/images/product/product-02.jpg", // Replace with actual image URL
   },
   {
     id: 3,
     name: "Malibu 2",
-    variants: "2 Variants",
+    firma: "Brend Tolov",
+    firma_type : "MCHJ",
     credit_type: "Avto",
     price: "324 560 000",
     status: "Finished",
@@ -51,7 +55,8 @@ const tableData: Product[] = [
   {
     id: 4,
     name: "2 xonali uy",
-    variants: "2 Variants",
+    firma: "Shohibek",
+    firma_type : "YATT",
     credit_type: "Ipoteka",
     price: "450 300 000",
     status: "Finished",
@@ -60,7 +65,8 @@ const tableData: Product[] = [
   {
     id: 5,
     name: "Cobalt",
-    variants: "1 Variant",
+    firma: "Shohibek",
+    firma_type : "YATT",
     credit_type: "Avto",
     price: "108 400 000",
     status: "Finished",
@@ -175,7 +181,7 @@ export default function RecentOrders() {
                         {product.name}
                       </p>
                       <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {product.variants}
+                      {product.firma}  {product.firma_type}
                       </span>
                     </div>
                   </div>

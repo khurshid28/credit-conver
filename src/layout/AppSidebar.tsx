@@ -64,8 +64,8 @@ const navItems: NavItem[] = [
     name: "Firmalar",
     icon: <GroupIcon />,
     subItems: [
-      { name: "MCHJ", path: "/mchj", pro: false },
-      { name: "YATT", path: "/yatt", pro: false }, 
+      { name: "MCHJ", path: "/firms-mchj", pro: false },
+      { name: "YATT", path: "/firms-yatt", pro: false }, 
     ],
   },
 
