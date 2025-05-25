@@ -102,12 +102,17 @@ const navItems: NavItem[] = [
     name: "Scoring",
     icon: <CheckCircleIcon />,
     subItems: [
-      { name: "Params", path: "/scoring-params", pro: false },
-      { name: "Requirements", path: "/requirements", pro: false },
-      { name: "Stop factors", path: "/stop-factors", pro: false }, 
-      { name: "Models", path: "/models", pro: false },
-      { name: "MCHJ", path: "/mchj", pro: false },
-      { name: "YATT", path: "/yatt", pro: false }
+      { name: "Models", path: "/scoring-models", pro: false },
+      { name: "Products", path: "/scoring-products", pro: false },
+      // { name: "Requirements", path: "/requirements", pro: false },
+      // { name: "Stop factors", path: "/stop-factors", pro: false }, 
+      // { name: "Criteria", path: "/criteria", pro: false }, 
+      // { name: "Models", path: "/models", pro: false },
+
+
+
+      { name: "Arizalar", path: "/arizalar", pro: false },
+      // { name: "YATT", path: "/yatt", pro: false }
     
     ],
   },
@@ -426,7 +431,7 @@ const AppSidebar: React.FC = () => {
                 height={60}
               />
                 <p className="text-center font-medium  text-theme-md hover:text-gray-900   dark:text-white">
-                Credit platform
+                HC
               </p>
 
              

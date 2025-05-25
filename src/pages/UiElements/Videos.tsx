@@ -10,8 +10,8 @@ export default function Videos() {
   return (
     <>
       <PageMeta
-        title="React.js Videos Tabs | Credit Dashboard"
-        description="This is React.js Videos page - Credit Dashboard"
+        title="React.js Videos Tabs | HC Dashboard"
+        description="This is React.js Videos page - HC Dashboard"
       />
       <PageBreadcrumb pageTitle="Videos" />
       <div className="grid grid-cols-1 gap-5 sm:gap-6 xl:grid-cols-2">

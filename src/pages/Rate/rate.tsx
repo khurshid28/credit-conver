@@ -7,8 +7,8 @@ export default function RatePage() {
   return (
     <>
       <PageMeta
-        title="Credit Dashboard"
-        description="Credit Dashboard"
+        title="HC Dashboard"
+        description="HC Dashboard"
       />
       <PageBreadcrumb pageTitle="Rates" />
       <div className="space-y-6">

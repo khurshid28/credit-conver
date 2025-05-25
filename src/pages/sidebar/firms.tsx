@@ -15,7 +15,7 @@ import Select from "../../components/form/Select";
 import MultiSelect from "../../components/form/MultiSelect";
 export interface Firm {
   name?: string;
-  image?: string;
+  inn?: string;
   section_id? :  string
 }
 
@@ -31,7 +31,7 @@ export default function FirmsPage() {
   };
   let emptyFirm: Firm = {
     name: "",
-    image: "",
+    inn: "",
   };
   let [Firm, setFirm] = useState<Firm>(emptyFirm);
 
@@ -59,7 +59,7 @@ export default function FirmsPage() {
 
   return (
     <>
-      <PageMeta title="Firms | Credit Dashboard" description="Credit Dashboard" />
+      <PageMeta title="Firms | HC Dashboard" description="HC Dashboard" />
       <PageBreadcrumb pageTitle="Firms" />
 
       <div className="space-y-6 ">

@@ -40,8 +40,8 @@ export default function SubjectsPage() {
   return (
     <>
       <PageMeta
-        title="Subjects | Credit Dashboard"
-        description="Credit Dashboard"
+        title="Subjects | HC Dashboard"
+        description="HC Dashboard"
       />
       <PageBreadcrumb pageTitle="Subjects" />
    

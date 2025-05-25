@@ -8,8 +8,8 @@ export default function UserProfiles() {
   return (
     <>
       <PageMeta
-        title="Credit Dashboard"
-        description="This is React.js Profile Dashboard page - Credit Dashboard"
+        title="HC Dashboard"
+        description="This is React.js Profile Dashboard page - HC Dashboard"
       />
       <PageBreadcrumb pageTitle="Profile" />
       <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">

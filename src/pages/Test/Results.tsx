@@ -7,8 +7,8 @@ export default function ResultsPage() {
   return (
     <>
       <PageMeta
-        title="Credit Dashboard"
-        description="Credit Dashboard"
+        title="HC Dashboard"
+        description="HC Dashboard"
       />
       <PageBreadcrumb pageTitle="Results" />
       <div className="space-y-6">

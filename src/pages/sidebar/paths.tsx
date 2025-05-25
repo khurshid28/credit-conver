@@ -59,7 +59,7 @@ export default function PathsPage() {
 
   return (
     <>
-      <PageMeta title="Paths | Credit Dashboard" description="Credit Dashboard" />
+      <PageMeta title="Paths | HC Dashboard" description="HC Dashboard" />
       <PageBreadcrumb pageTitle="Paths" />
 
       <div className="space-y-6 ">
