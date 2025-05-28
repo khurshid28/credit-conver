@@ -31,6 +31,8 @@ import PathsPage from "./pages/sidebar/paths";
 import FirmsPage from "./pages/sidebar/firms";
 import AdminsPage from "./pages/sidebar/admins";
 import UsersPage from "./pages/sidebar/users";
+import ScoringModelsPage from "./pages/sidebar/models";
+import ChatPage from "./pages/chat";
 
 export default function App() {
   return (
@@ -46,9 +48,12 @@ export default function App() {
             {/* <Route path="/teachers" element={<TeachersPage />} />
              <Route path="/groups" element={< GroupsPage />} />
              <Route path="/students" element={<StudentsPage />} /> */}
-
+           <Route index path="/scoring-models" element={<ScoringModelsPage />} />
             <Route index path="/admins" element={<AdminsPage />} />
             <Route index path="/users" element={<UsersPage />} />
+
+
+             <Route index path="/chat" element={<ChatPage />} />
 
             {/* People Page */}
             {/* <Route path="/subjects" element={<SubjectsPage />} />

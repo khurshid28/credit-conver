@@ -107,7 +107,7 @@ const navItems: NavItem[] = [
 
 
 
-      { name: "Arizalar", path: "/arizalar", pro: false },
+      { name: "Arizalar", path: "/scoring-requests", pro: false },
       // { name: "YATT", path: "/yatt", pro: false }
     
     ],
@@ -131,7 +131,7 @@ const navItems: NavItem[] = [
   {
     icon: <ChatIcon />,
     name: "Chats",
-    path: "/chats",
+    path: "/chat",
   },
 
   // {
