@@ -29,6 +29,8 @@ import ResultsPage from "./pages/Test/Results";
 import TestsPage from "./pages/Test/Tests";
 import PathsPage from "./pages/sidebar/paths";
 import FirmsPage from "./pages/sidebar/firms";
+import AdminsPage from "./pages/sidebar/admins";
+import UsersPage from "./pages/sidebar/users";
 
 export default function App() {
   return (
@@ -40,31 +42,27 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
 
-
-             {/* People Page */}
-             <Route path="/teachers" element={<TeachersPage />} />
+            {/* People Page */}
+            {/* <Route path="/teachers" element={<TeachersPage />} />
              <Route path="/groups" element={< GroupsPage />} />
-             <Route path="/students" element={<StudentsPage />} />
+             <Route path="/students" element={<StudentsPage />} /> */}
 
-
+            <Route index path="/admins" element={<AdminsPage />} />
+            <Route index path="/users" element={<UsersPage />} />
 
             {/* People Page */}
-            <Route path="/subjects" element={<SubjectsPage />} />
+            {/* <Route path="/subjects" element={<SubjectsPage />} />
             <Route path="/books" element={<BooksPage />} />
             <Route path="/sections" element={<SectionsPage />} />
             <Route path="/tests" element={<TestsPage />} />
 
-            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/results" element={<ResultsPage />} /> */}
 
+            {/* <Route index path="/rate" element={<RatePage />} /> */}
 
-
-            <Route index path="/rate" element={<RatePage />} />
-
-           
-            <Route index path="/paths" element={<PathsPage />} />
+            {/* <Route index path="/paths" element={<PathsPage />} /> */}
             <Route index path="/firms-mchj" element={<FirmsPage />} />
             <Route index path="/firms-yatt" element={<FirmsPage />} />
-
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />

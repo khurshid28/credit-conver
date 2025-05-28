@@ -49,15 +49,16 @@ const navItems: NavItem[] = [
 
  
   {
-    name: "Credits",
+    name: "Products",
     icon: <BoxIcon />,
-    subItems: [
-      { name: "Params", path: "/credit-params", pro: false },
-      { name: "Arizalar", path: "/arizalar", pro: false },
-      { name: "Shartnomalar", path: "/shartnomalar", pro: false }, 
+    path: "/products",
+    // subItems: [
+    //   { name: "Params", path: "/credit-params", pro: false },
+    //   { name: "Arizalar", path: "/arizalar", pro: false },
+    //   { name: "Shartnomalar", path: "/shartnomalar", pro: false }, 
       
     
-    ],
+    // ],
   },
 
   {
@@ -70,16 +71,11 @@ const navItems: NavItem[] = [
   },
 
   {
-    icon: <SettingsIcon />,
-    name: "Settings",
+    icon: <GroupIcon />,
+    name: "Adminstator",
     subItems: [
-      { name: "Fillials", path: "/fillials", pro: false },
+      { name: "Admins", path: "/admins", pro: false },
       { name: "Users", path: "/users", pro: false },
-      { name: "Laws", path: "/laws", pro: false },
-      { name: "Templates", path: "/templates", pro: false },
-     
-    
-    
     ],
   },
 
@@ -103,7 +99,7 @@ const navItems: NavItem[] = [
     icon: <CheckCircleIcon />,
     subItems: [
       { name: "Models", path: "/scoring-models", pro: false },
-      { name: "Products", path: "/scoring-products", pro: false },
+      // { name: "Products", path: "/scoring-products", pro: false },
       // { name: "Requirements", path: "/requirements", pro: false },
       // { name: "Stop factors", path: "/stop-factors", pro: false }, 
       // { name: "Criteria", path: "/criteria", pro: false }, 
@@ -118,19 +114,19 @@ const navItems: NavItem[] = [
   },
  
 
-  {
-    icon: <DocsIcon />,
-    name: "Docs",
-    path: "/docs",
-  },
+  // {
+  //   icon: <DocsIcon />,
+  //   name: "Docs",
+  //   path: "/docs",
+  // },
   
   
 
-  {
-    icon: <ListIcon />,
-    name: "Paths",
-    path: "/paths",
-  },
+  // {
+  //   icon: <ListIcon />,
+  //   name: "Paths",
+  //   path: "/paths",
+  // },
 
   {
     icon: <ChatIcon />,
