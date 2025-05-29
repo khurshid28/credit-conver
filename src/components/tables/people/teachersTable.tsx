@@ -17,10 +17,11 @@ import {
   CopyIcon,
   DeleteIcon,
   DownloadIcon,
-  EditIcon,
+  PencilIcon,
   EyeCloseIcon,
   EyeIcon,
   PlusIcon,
+  TrashBinIcon,
 } from "../../../icons";
 import { useEffect, useState } from "react";
 import { Teacher } from "../../../pages/People/Teachers";
@@ -757,7 +758,7 @@ export default function TeachersTable() {
                       openModal();
                     }}
                   >
-                    <EditIcon></EditIcon>
+                    <PencilIcon></PencilIcon>
                   </Button>
 
                   <Button
@@ -765,7 +766,7 @@ export default function TeachersTable() {
                     variant="outline"
                     onClick={async () => {}}
                   >
-                    <DeleteIcon className="text-xl fill-gray-500 dark:fill-gray-400"></DeleteIcon>
+                     <TrashBinIcon className="text-xl fill-gray-500 dark:fill-gray-400"></TrashBinIcon>
                   </Button>
                 </TableCell>
               </TableRow>

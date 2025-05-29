@@ -15,12 +15,13 @@ import {
     CloseIcon,
     CloseLineIcon,
     CopyIcon,
-    DeleteIcon,
+  
     DownloadIcon,
-    EditIcon,
     EyeCloseIcon,
     EyeIcon,
+    PencilIcon,
     PlusIcon,
+    TrashBinIcon,
   } from "../../../icons";
   import { useEffect, useState } from "react";
   import { Admin } from "../../../pages/sidebar/admins";
@@ -766,7 +767,7 @@ import FileInput from "../../form/input/FileInput";
                         openModal();
                       }}
                     >
-                      <EditIcon></EditIcon>
+                      <PencilIcon></PencilIcon>
                     </Button>
   
                     <Button
@@ -774,7 +775,7 @@ import FileInput from "../../form/input/FileInput";
                       variant="outline"
                       onClick={async () => {}}
                     >
-                      <DeleteIcon className="text-xl fill-gray-500 dark:fill-gray-400"></DeleteIcon>
+                      <TrashBinIcon className="text-xl fill-gray-500 dark:fill-gray-400"></TrashBinIcon>
                     </Button>
                   </TableCell>
                 </TableRow>

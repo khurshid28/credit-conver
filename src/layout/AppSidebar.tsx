@@ -31,6 +31,7 @@ import {
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import SidebarWidget from "./SidebarWidget";
+import { FiArrowRightCircle } from "react-icons/fi";
 
 type NavItem = {
   name: string;
@@ -48,18 +49,7 @@ const navItems: NavItem[] = [
 
 
  
-  {
-    name: "Products",
-    icon: <BoxIcon />,
-    path: "/products",
-    // subItems: [
-    //   { name: "Params", path: "/credit-params", pro: false },
-    //   { name: "Arizalar", path: "/arizalar", pro: false },
-    //   { name: "Shartnomalar", path: "/shartnomalar", pro: false }, 
-      
-    
-    // ],
-  },
+ 
 
   {
     name: "Firmalar",
@@ -94,6 +84,18 @@ const navItems: NavItem[] = [
   //   name: "User Profile",
   //   path: "/profile",
   // },
+   {
+    name: "Products",
+    icon: <BoxIcon />,
+    path: "/products",
+    // subItems: [
+    //   { name: "Params", path: "/credit-params", pro: false },
+    //   { name: "Arizalar", path: "/arizalar", pro: false },
+    //   { name: "Shartnomalar", path: "/shartnomalar", pro: false }, 
+      
+    
+    // ],
+  },
   {
     name: "Scoring",
     icon: <CheckCircleIcon />,
@@ -113,6 +115,17 @@ const navItems: NavItem[] = [
     ],
   },
  
+
+   {
+    name: "Credits",
+    icon: <PieChartIcon />,
+    path: "/credits",
+  },
+   {
+    name: "Yo'nalishlar",
+    icon: <FiArrowRightCircle />,
+    path: "/paths",
+  },
 
   // {
   //   icon: <DocsIcon />,

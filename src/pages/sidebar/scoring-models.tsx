@@ -2,7 +2,7 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import ComponentCard from "../../components/common/ComponentCard";
 import PageMeta from "../../components/common/PageMeta";
 
-import { BoxIcon, DeleteIcon, DownloadIcon, PlusIcon } from "../../icons";
+import { BoxIcon, DeleteIcon, DownloadIcon, PlusIcon, TrashBinIcon } from "../../icons";
 import Button from "../../components/ui/button/Button";
 import { useModal } from "../../hooks/useModal";
 import Label from "../../components/form/Label";
@@ -265,7 +265,7 @@ export default function ScoringModelsPage() {
                           size="sm"
                           variant="error"
                           startIcon={
-                            <DeleteIcon className="size-5 fill-white" />
+                            <TrashBinIcon className="size-5 fill-white" />
                           }
                           onClick={() => {
                             let creteries = ScoringModel.creteries ?? [];

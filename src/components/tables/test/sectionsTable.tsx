@@ -17,10 +17,11 @@ import {
     CopyIcon,
     DeleteIcon,
     DownloadIcon,
-    EditIcon,
+    PencilIcon,
     EyeCloseIcon,
     EyeIcon,
     PlusIcon,
+    TrashBinIcon,
 } from "../../../icons";
 import { useEffect, useState } from "react";
 import { useModal } from "../../../hooks/useModal";
@@ -452,7 +453,7 @@ export default function SectionsTable() {
                                             openModal();
                                         }}
                                     >
-                                        <EditIcon></EditIcon>
+                                        <PencilIcon></PencilIcon>
                                     </Button>
 
                                     <Button
@@ -460,7 +461,7 @@ export default function SectionsTable() {
                                         variant="outline"
                                         onClick={async () => { }}
                                     >
-                                        <DeleteIcon className="text-xl fill-gray-500 dark:fill-gray-400"></DeleteIcon>
+                                         <TrashBinIcon className="text-xl fill-gray-500 dark:fill-gray-400"></TrashBinIcon>
                                     </Button>
                                 </TableCell>
                             </TableRow>

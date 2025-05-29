@@ -22,6 +22,9 @@ import {
   EyeIcon,
   PlusIcon,
   TrashBinIcon,
+  PaperPlaneIcon,
+  TableIcon,
+  FileIcon,
 } from "../../../icons";
 import { useEffect, useState } from "react";
 import { useModal } from "../../../hooks/useModal";
@@ -29,50 +32,125 @@ import Input from "../../form/input/InputField";
 import Label from "../../form/Label";
 import { Modal } from "../../ui/modal";
 import Select from "../../form/Select";
-import { ScoringModel } from "../../../pages/sidebar/scoring-models";
+import { ScoringRequest } from "../../../pages/sidebar/scoring-request";
 import DropzoneComponent from "../../form/form-elements/DropZone";
 import FileInputExample from "../../form/form-elements/FileInputExample";
 import FileInput from "../../form/input/FileInput";
 import MultiSelect from "../../form/MultiSelect";
+import { FiDownload } from "react-icons/fi";
 
 interface Order {
   id: number;
-  name: string;
+  order_id: number;
+  user: {
+    code: string;
+    director: {
+      fullname: string;
+    };
+  };
+  product: {
+    name: string;
+  };
+  fillial: {
+    name: string;
+  };
   ball: number;
-  count: number;
-  ariza_count: number;
   createdAt: Date;
-  status: string;
+  status: "Pending" | "Success" | "Error";
 }
 
 // Define the table data using the interface
 const statictableData: Order[] = [
   {
-    id: 1,
+    id: 131,
+    order_id: 235,
 
-    name: `Scoring model 2025`,
-    createdAt: new Date("2025-03-02"),
-
-    status: "Active",
-    count: 5,
+    createdAt: new Date("2025-03-02 12:45"),
+    status: "Success",
     ball: 75,
-    ariza_count : 652,
+    user: {
+      code: "739101",
+      director: {
+        fullname: "Bekzod Hamroyev",
+      },
+    },
+    fillial: {
+      name: "Chilonzor",
+    },
+    product: {
+      name: "Product nomi",
+    },
   },
 
   {
-    id: 2,
+    id: 130,
+    order_id: 234,
+    createdAt: new Date("2025-02-06 13:20"),
 
-    name: `Scoring model 2024`,
-    createdAt: new Date("2024-11-21"),
+    status: "Error",
 
-    status: "Active",
-    count: 6,
-    ball: 70,
-    ariza_count : 1309,
+    ball: -16,
+    user: {
+      code: "540180",
+      director: {
+        fullname: "Mahmud Ergashov",
+      },
+    },
+    fillial: {
+      name: "Mirobod",
+    },
+    product: {
+      name: "Product nomi 2",
+    },
+  },
+
+  {
+    id: 129,
+    order_id: 233,
+    createdAt: new Date("2025-01-19 10:06"),
+
+    status: "Error",
+
+    ball: -27,
+    user: {
+      code: "5402298",
+      director: {
+        fullname: "Elyor Dilshodov",
+      },
+    },
+    fillial: {
+      name: "Mirobod",
+    },
+    product: {
+      name: "Product nomi 2",
+    },
+  },
+
+
+   {
+    id: 128,
+    order_id: 232,
+    createdAt: new Date("2025-01-18 15:22"),
+
+    status: "Pending",
+
+    ball: 0,
+    user: {
+      code: "4502361",
+      director: {
+        fullname: "Sherzod Komilov",
+      },
+    },
+    fillial: {
+      name: "Yunusobod",
+    },
+    product: {
+      name: "Product nomi 2",
+    },
   },
 ];
 
-export default function ScoringModelsTable() {
+export default function ScoringRequestsTable() {
   const [tableData, settableData] = useState(statictableData);
 
   const { isOpen, openModal, closeModal } = useModal();
@@ -82,14 +160,15 @@ export default function ScoringModelsTable() {
     console.log("handleAdding...");
 
     closeModal();
-    setScoringModel(emptyScoringModel);
+    setScoringRequest(emptyScoringRequest);
   };
-  let emptyScoringModel: ScoringModel = {
-    name: "",
+  let emptyScoringRequest: ScoringRequest = {
+
     createdAt: new Date(),
+    
   };
-  let [ScoringModel, setScoringModel] =
-    useState<ScoringModel>(emptyScoringModel);
+  let [ScoringRequest, setScoringRequest] =
+    useState<ScoringRequest>(emptyScoringRequest);
 
   const options = [
     { value: "5", label: "5" },
@@ -145,11 +224,11 @@ export default function ScoringModelsTable() {
   //   { value: "Mustaqillik", label: "Mustaqillik" },
   // ];
 
-  let [subjectoptionValue, setSubjectoptionValue] = useState("ALL FILLIAL");
+  //   let [subjectoptionValue, setSubjectoptionValue] = useState("ALL FILLIAL");
 
-  const handleSelectSubjectChange = (value: string) => {
-    setSubjectoptionValue(value);
-  };
+  //   const handleSelectSubjectChange = (value: string) => {
+  //     setSubjectoptionValue(value);
+  //   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -168,7 +247,7 @@ export default function ScoringModelsTable() {
     //     statictableData.filter((item) => item.subject_id === subjectoptionValue)
     //   );
     // }
-  }, [optionValue, subjectoptionValue]);
+  }, [optionValue]);
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -199,44 +278,63 @@ export default function ScoringModelsTable() {
             <TableRow>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
               >
-                Name
+                ID
               </TableCell>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium  text-center text-theme-xs text-gray-800 dark:text-white/90"
               >
-                Added
-              </TableCell>
-                 <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
-              >
-                Arizalar
-              </TableCell>
-                <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
-              >
-                Kreteriya
+                Ariza ID
               </TableCell>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium  text-center text-theme-xs text-gray-800 dark:text-white/90"
               >
-                O'tish bali
+                Mijoz kodi
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
+              >
+                Mijoz ismi
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
+              >
+                Fillial
               </TableCell>
 
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
               >
-                Status
+                Mahsulot nomi
               </TableCell>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
+              >
+                Yaratilgan vaqti
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium  text-center text-theme-xs text-gray-800 dark:text-white/90"
+              >
+                Skoring Modeli Ball
+              </TableCell>
+
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
+              >
+                Holat
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
               >
                 Actions
               </TableCell>
@@ -250,50 +348,79 @@ export default function ScoringModelsTable() {
                 <TableCell className="px-5 py-4 sm:px-6 text-start">
                   <div className="flex items-center gap-3">
                     <div>
-                      <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {order.name}
+                      <span className="block font-medium  text-theme-sm text-gray-500 dark:text-gray-400">
+                        {order.id}
                       </span>
                     </div>
                   </div>
                 </TableCell>
-                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {Moment(order.createdAt).format("MMMM DD, yyyy")}
-                </TableCell>
-                 <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
-                  {order.ariza_count}
+                <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
+                  {order.order_id}
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
-                  {order.count}
+                  {order.user.code}
+                </TableCell>
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.user.director.fullname}
+                </TableCell>
+
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.fillial.name}
+                </TableCell>
+
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.product.name}
+                </TableCell>
+
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {Moment(order.createdAt).format("HH:mm  MMMM DD, yyyy")}
                 </TableCell>
 
                 <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
                   {order.ball}
                 </TableCell>
 
-              
-
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <Badge
                     size="sm"
                     color={
-                      order.status === "Active"
+                      order.status === "Success"
                         ? "success"
                         : order.status === "Pending"
                         ? "warning"
                         : "error"
                     }
                   >
-                    {order.status}
+                    {order.status === "Success"
+                      ? "Muvafaqqiyatli"
+                      : order.status === "Pending"
+                      ? "Kutilmoqda"
+                      : "Muvafaqqiyatsiz"}
                   </Badge>
                 </TableCell>
+
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 flex gap-2  flex-row items-center">
+                  <Button
+                    size="mini"
+                    variant="outline"
+                    onClick={async () => {}}
+                  >
+                    <FileIcon className="text-xl fill-gray-500 dark:fill-gray-400"></FileIcon>
+                  </Button>
+
+                  <Button
+                    size="mini"
+                    variant="outline"
+                    onClick={async () => {}}
+                  >
+                    <DownloadIcon className="text-xl fill-gray-500 dark:fill-gray-400"></DownloadIcon>
+                  </Button>
                   <Button
                     size="mini"
                     variant="outline"
                     className="text-xl fill-gray-500 dark:fill-gray-400"
                     onClick={() => {
-                      setScoringModel({
-                        name: order.name,
+                      setScoringRequest({
                         createdAt: order.createdAt,
                       });
                       openModal();
@@ -364,10 +491,10 @@ export default function ScoringModelsTable() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Edit ScoringModel
+              Edit Ariza
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              Update ScoringModel with full details.
+              Update Ariza with full details.
             </p>
           </div>
           <form className="flex flex-col">
@@ -378,20 +505,23 @@ export default function ScoringModelsTable() {
                   <Select
                     options={all_Subject_options}
                     className="dark:bg-dark-900"
-                    defaultValue={`${ScoringModel.section_id}`}
+                    defaultValue={`${ScoringRequest.section_id}`}
                     onChange={() => {}}
                   />
                 </div> */}
 
                 <div>
-                  <Label>Name</Label>
+                  <Label>Mijoz kodi</Label>
                   <Input
                     type="text"
-                    value={ScoringModel.name}
+                    value={ScoringRequest.user?.code}
                     onChange={(e) =>
-                      setScoringModel({
-                        ...ScoringModel,
-                        name: e.target.value,
+                      setScoringRequest({
+                        ...ScoringRequest,
+                        user: {
+                            ...ScoringRequest.user,
+                            code: e.target.value,
+                        },
                       })
                     }
                   />
@@ -401,10 +531,10 @@ export default function ScoringModelsTable() {
                   <Label>INN</Label>
                   <Input
                     type="text"
-                    value={ScoringModel.inn}
+                    value={ScoringRequest.inn}
                     onChange={(e) =>
-                      setScoringModel({
-                        ...ScoringModel,
+                      setScoringRequest({
+                        ...ScoringRequest,
                         inn: e.target.value,
                       })
                     }
