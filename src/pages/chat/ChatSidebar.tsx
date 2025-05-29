@@ -9,7 +9,7 @@ const users = [
 export default function ChatSidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (v: boolean) => void }) {
   return (
     <div
-      className={`fixed md:static top-0 left-0 z-50 h-full w-64 md:w-1/3 lg:w-1/4 bg-white dark:bg-boxdark border-r border-stroke dark:border-strokedark shadow-lg transform transition-transform duration-300
+      className={`fixed md:static top-0 left-0 z-50 h-full w-64 md:w-1/3 lg:w-1/4 overflow-hidden rounded-xl border border-gray-200  dark:border-white/[0.05] bg-white dark:bg-white/[0.03] border-r border-stroke dark:border-strokedark shadow-lg transform transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
     >
       <div className="flex justify-between items-center p-4 md:hidden">
@@ -22,14 +22,14 @@ export default function ChatSidebar({ isOpen, setIsOpen }: { isOpen: boolean, se
         <input
           type="text"
           placeholder="Search..."
-          className="w-full px-3 py-2 rounded-md border border-stroke dark:border-strokedark dark:bg-form-input dark:text-white"
+          className="w-full px-3 py-2  dark:bg-dark-900 h-11 rounded-lg border border-gray-200 bg-transparent  text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 "
         />
         <div className="mt-4 space-y-4">
           {users.map((user, i) => (
             <div key={i} className="flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-meta-4 p-2 rounded-md">
               <img src={user.avatar} className="w-10 h-10 rounded-full" alt="avatar" />
               <div>
-                <h4 className="text-sm font-semibold text-black dark:text-white">{user.name}</h4>
+                <h4 className="text-sm font-semibold text-gray-500 text-start  dark:text-gray-400">{user.name}</h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400">{user.role}</p>
               </div>
               <span className="ml-auto text-xs text-gray-400">{user.time}</span>

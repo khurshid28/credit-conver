@@ -101,16 +101,10 @@ const navItems: NavItem[] = [
     icon: <CheckCircleIcon />,
     subItems: [
       { name: "Models", path: "/scoring-models", pro: false },
-      // { name: "Products", path: "/scoring-products", pro: false },
-      // { name: "Requirements", path: "/requirements", pro: false },
-      // { name: "Stop factors", path: "/stop-factors", pro: false }, 
-      // { name: "Criteria", path: "/criteria", pro: false }, 
-      // { name: "Models", path: "/models", pro: false },
-
-
-
+    
       { name: "Arizalar", path: "/scoring-requests", pro: false },
-      // { name: "YATT", path: "/yatt", pro: false }
+      { name: "Shartnomalar", path: "/scoring-contracts", pro: false },
+    
     
     ],
   },

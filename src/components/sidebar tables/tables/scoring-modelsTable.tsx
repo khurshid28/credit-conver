@@ -38,6 +38,12 @@ import MultiSelect from "../../form/MultiSelect";
 interface Order {
   id: number;
   name: string;
+  product: {
+    name: string;
+    date: string;
+    max_amount: string;
+
+  },
   ball: number;
   count: number;
   ariza_count: number;
@@ -50,25 +56,32 @@ const statictableData: Order[] = [
   {
     id: 1,
 
-    name: `Scoring model 2025`,
+    name: `Model 1`,
     createdAt: new Date("2025-03-02"),
-
+    product: {
+      name: `Savdoni Moliyalashtirish`,
+      max_amount: "10 mlrd so'mgacha",
+      date: "4 yilgacha"
+    },
     status: "Active",
-    count: 5,
+    count: 14,
     ball: 75,
-    ariza_count : 652,
+    ariza_count: 652,
   },
 
   {
     id: 2,
-
-    name: `Scoring model 2024`,
+    name: `Model 2`,
     createdAt: new Date("2024-11-21"),
-
+    product: {
+      name: `"Oson" avtokredit`,
+      max_amount: "500 mln so'mgacha",
+      date: "12 oygacha"
+    },
     status: "Active",
-    count: 6,
+    count: 22,
     ball: 70,
-    ariza_count : 1309,
+    ariza_count: 1309,
   },
 ];
 
@@ -86,6 +99,9 @@ export default function ScoringModelsTable() {
   };
   let emptyScoringModel: ScoringModel = {
     name: "",
+    product: {
+      name: ""
+    },
     createdAt: new Date(),
   };
   let [ScoringModel, setScoringModel] =
@@ -199,44 +215,61 @@ export default function ScoringModelsTable() {
             <TableRow>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Name
               </TableCell>
+
+
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
-                Added
+                Product
               </TableCell>
-                 <TableCell
+
+
+              <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
+              >
+                Kredit muddati
+              </TableCell>
+
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
+              >
+                Kredit miqdori
+              </TableCell>
+              <TableCell
+                isHeader
+                className="px-5 py-3 font-medium text-gray-500 text-center text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Arizalar
               </TableCell>
-                <TableCell
+              <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-center text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Kreteriya
               </TableCell>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-center text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-center text-gray-800 text-theme-sm dark:text-white/90"
               >
                 O'tish bali
               </TableCell>
 
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Status
               </TableCell>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Actions
               </TableCell>
@@ -250,16 +283,28 @@ export default function ScoringModelsTable() {
                 <TableCell className="px-5 py-4 sm:px-6 text-start">
                   <div className="flex items-center gap-3">
                     <div>
-                      <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                      <span className="block font-medium text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         {order.name}
                       </span>
                     </div>
                   </div>
                 </TableCell>
-                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {Moment(order.createdAt).format("MMMM DD, yyyy")}
+
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.product.name}
                 </TableCell>
-                 <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
+
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.product.date}
+                </TableCell>
+                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.product.max_amount}
+                </TableCell>
+                {/* <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {order.ariza_count}
+                  {Moment(order.createdAt).format("MMMM DD, yyyy")}
+                </TableCell> */}
+                <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
                   {order.ariza_count}
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-center text-theme-sm dark:text-gray-400">
@@ -270,7 +315,7 @@ export default function ScoringModelsTable() {
                   {order.ball}
                 </TableCell>
 
-              
+
 
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <Badge
@@ -279,8 +324,8 @@ export default function ScoringModelsTable() {
                       order.status === "Active"
                         ? "success"
                         : order.status === "Pending"
-                        ? "warning"
-                        : "error"
+                          ? "warning"
+                          : "error"
                     }
                   >
                     {order.status}
@@ -295,6 +340,7 @@ export default function ScoringModelsTable() {
                       setScoringModel({
                         name: order.name,
                         createdAt: order.createdAt,
+                        product: order.product
                       });
                       openModal();
                     }}
@@ -305,7 +351,7 @@ export default function ScoringModelsTable() {
                   <Button
                     size="mini"
                     variant="outline"
-                    onClick={async () => {}}
+                    onClick={async () => { }}
                   >
                     <TrashBinIcon className="text-xl fill-gray-500 dark:fill-gray-400"></TrashBinIcon>
                   </Button>

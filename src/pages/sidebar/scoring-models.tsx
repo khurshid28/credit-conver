@@ -16,6 +16,9 @@ import ScoringModelsTable from "../../components/sidebar tables/tables/scoring-m
 import Checkbox from "../../components/form/input/Checkbox";
 export interface ScoringModel {
   name?: string;
+  product: {
+    name: string;
+  },
   createdAt: Date;
   ball?: string;
   count?: number;
@@ -33,7 +36,7 @@ export interface CreteriaModel {
 
 export const all_creteriya = [
   {
-    value: "Katm bali 200 balldan yuqori bolishi",
+    value: `Katm bali 200 balldan yuqori bolishi`,
     label: "Katm bali 200 balldan yuqori bolishi",
   },
   {
@@ -52,6 +55,78 @@ export const all_creteriya = [
   },
 ];
 
+
+
+export const all_products = [
+  {
+    value: `"Oson" avtokrediti`,
+    label: `"Oson" avtokrediti`,
+  },
+
+  {
+    value: `Biznes uchun avtokredit`,
+    label: `Biznes uchun avtokredit`,
+  },
+
+
+
+  {
+    value: `Savdoni moliyalashtirish`,
+    label: `Savdoni moliyalashtirish`,
+  },
+
+  {
+    value: `Overdraft`,
+    label: `Overdraft`,
+  },
+
+  {
+    value: `"Taraqqiyot" krediti`,
+    label: `"Taraqqiyot" krediti`,
+  },
+
+
+
+
+
+  {
+    value: `"Tezkor" krediti`,
+    label: `"Tezkor" krediti`,
+  },
+  {
+    value: `"Yengil start" krediti`,
+    label: `"Yengil start" krediti`,
+  },
+  {
+    value: `"Imkoniyat" krediti`,
+    label: `"Imkoniyat" krediti`,
+  },
+
+  {
+    value: `«Kelajakka qadam»`,
+    label: `«Kelajakka qadam»`,
+  },
+
+
+  {
+    value: `National Green`,
+    label: `National Green`,
+  },
+
+
+  {
+    value: `Servis sohasini rivojlantirish`,
+    label: `Servis sohasini rivojlantirish`,
+  },
+  {
+    value: `Xorijiy kredit liniyalari`,
+    label: `Xorijiy kredit liniyalari`,
+  },
+
+
+
+
+];
 export default function ScoringModelsPage() {
   const { isOpen, openModal, closeModal } = useModal();
   const handleAdding = () => {
@@ -67,6 +142,9 @@ export default function ScoringModelsPage() {
     name: "",
     createdAt: new Date(),
     ball: "100",
+    product: {
+      name: ""
+    },
     creteries: [
       {
         id: 0,
@@ -105,14 +183,14 @@ export default function ScoringModelsPage() {
   return (
     <>
       <PageMeta
-        title="Scoring Models | HC Dashboard"
+        title="Models | HC Dashboard"
         description="HC Dashboard"
       />
-      <PageBreadcrumb pageTitle="Scoring Models" />
+      <PageBreadcrumb pageTitle="Models" />
 
       <div className="space-y-6 ">
         <ComponentCard
-          title="Scoring Models Table"
+          title="Models Table"
           action={
             <div className="flex flex-row gap-4">
               <div>
@@ -133,7 +211,7 @@ export default function ScoringModelsPage() {
                   openModal();
                 }}
               >
-                Add Scoring Model
+                Add Model
               </Button>
             </div>
           }
@@ -141,21 +219,38 @@ export default function ScoringModelsPage() {
           <ScoringModelsTable />
         </ComponentCard>
       </div>
-      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
+      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[800px] m-4">
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add Scoring Model
+              Add Model
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              Create new Scoring Model with full details.
+              Create new Model with full details.
             </p>
           </div>
           <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar pb-4">
-              <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
+              <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2 max-h-[380px]">
+
                 <div>
-                  <Label>Name</Label>
+                  <Label>Product</Label>
+                  <Select
+                    options={all_products}
+                    className="dark:bg-dark-900"
+                    placeholder="Productni tanglang"
+                    onChange={(e) => {
+                      //  setScoringModel({
+                      //   ...ScoringModel,
+                      //   type: e.target.value,
+                      // })
+                    }}
+                  />
+                </div>
+                <div>
+
+
+                  <Label>Model nomi</Label>
                   <Input
                     type="text"
                     value={ScoringModel.name}
@@ -168,7 +263,10 @@ export default function ScoringModelsPage() {
                   />
                 </div>
 
+
                 <div>
+
+
                   <Label>O'tish bali</Label>
                   <Input
                     type="text"
@@ -182,7 +280,10 @@ export default function ScoringModelsPage() {
                   />
                 </div>
 
-                <div className="col-span-2 max-h-96 overflow-y-auto px-2">
+                <div></div>
+
+
+                <div className="col-span-2  px-2">
                   {ScoringModel.creteries?.map((item, index) => (
                     <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2 ">
                       <div
@@ -193,7 +294,7 @@ export default function ScoringModelsPage() {
                         <Select
                           options={all_creteriya}
                           className="dark:bg-dark-900"
-                          placeholder="Creteria"
+                          placeholder="Mezonlar Blokini tanlang"
                           onChange={(e) => {
                             //  setScoringModel({
                             //   ...ScoringModel,

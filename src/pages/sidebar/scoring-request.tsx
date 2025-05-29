@@ -208,7 +208,7 @@ export default function ScoringRequestsPage() {
           </div>
           <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar pb-4">
-              <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-3 max-h-[640px]">
+              <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-3 max-h-[480px]">
                 <div className="pt-4 mt-4  col-span-3 flex flex-row items-center gap-2 border-t border-gray-100 dark:border-white/[0.05] text-xl font-semibold text-gray-800 dark:text-white/90">
                   <BoxIconLine className="size-5  fill-gray-500 dark:fill-gray-400" />
                   <p>Kredit mahsuloti</p>

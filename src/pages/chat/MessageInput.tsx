@@ -12,13 +12,13 @@ export default function MessageInput({
   sendMessage: () => void;
 }) {
   return (
-    <div className="border-t border-stroke dark:border-strokedark p-4 flex items-center gap-2">
+    <div className="border-t border-gray-200 dark:border-white/[0.05] border-stroke dark:border-strokedark  p-4 flex items-center gap-2">
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
         type="text"
         placeholder="Type a message"
-        className="flex-1 px-4 py-2 rounded-md border border-stroke dark:border-strokedark dark:bg-form-input dark:text-white focus:outline-none"
+        className="flex-1 px-4 py-2 rounded-md border border-gray-200 dark:border-white/[0.05] border-stroke dark:border-strokedark dark:bg-form-input dark:text-white focus:outline-none"
       />
     
 

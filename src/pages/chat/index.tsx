@@ -29,7 +29,7 @@ export default function ChatPage() {
   return (
     <>
       <PageBreadcrumb pageTitle="Chat" />
-      <div className="flex flex-col md:flex-row h-[calc(100vh-150px)] rounded-lg overflow-hidden shadow-lg bg-white dark:bg-boxdark">
+      <div className="flex flex-col md:flex-row h-[calc(100vh-150px)] rounded-lg overflow-hidden shadow-lg  rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
         <ChatSidebar isOpen ={isOpen} setIsOpen={setisOpen}/>
         <div className="w-full md:w-2/3 lg:w-3/4 flex flex-col justify-between">
           <ChatHeader onMobileMenu={()=>setisOpen(!isOpen)}/>

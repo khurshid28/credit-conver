@@ -78,7 +78,7 @@ const statictableData: Order[] = [
       name: "Chilonzor",
     },
     product: {
-      name: "Product nomi",
+      name: `Savdoni moliyalashtirish`,
     },
   },
 
@@ -100,7 +100,7 @@ const statictableData: Order[] = [
       name: "Mirobod",
     },
     product: {
-      name: "Product nomi 2",
+      name: `"Oson" avtokrediti`,
     },
   },
 
@@ -122,7 +122,7 @@ const statictableData: Order[] = [
       name: "Mirobod",
     },
     product: {
-      name: "Product nomi 2",
+      name: "Savdoni moliyalashtirish",
     },
   },
 
@@ -145,7 +145,7 @@ const statictableData: Order[] = [
       name: "Yunusobod",
     },
     product: {
-      name: "Product nomi 2",
+      name: `"Yengil start" krediti`,
     },
   },
 ];
@@ -323,7 +323,7 @@ export default function ScoringRequestsTable() {
                 isHeader
                 className="px-5 py-3 font-medium  text-center text-theme-xs text-gray-800 dark:text-white/90"
               >
-                Skoring Modeli Ball
+                Modeli Ball
               </TableCell>
 
               <TableCell

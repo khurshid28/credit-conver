@@ -3,7 +3,7 @@ import { FiPhone, FiVideo, FiMoreVertical, FiMenu } from 'react-icons/fi';
 
 export default function ChatHeader({ onMobileMenu }: { onMobileMenu: () => void }) {
   return (
-    <div className="border-b border-stroke dark:border-strokedark p-4 flex justify-between items-center">
+    <div className="border-b border-gray-200 dark:border-white/[0.05] border-stroke dark:border-strokedark p-4 flex justify-between items-center">
       <div className="flex items-center gap-3">
         <img src="/images/user/user-02.jpg" alt="user" className="w-10 h-10 rounded-full" />
         <div>
