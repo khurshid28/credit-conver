@@ -21,6 +21,7 @@
     "@react-jvectormap/world": "^1.1.2",
     "apexcharts": "^4.1.0",
     "clsx": "^2.1.1",
+    "dotenv-safe": "^9.1.0",
     "flatpickr": "^4.6.13",
     "mahad-test-web": "file:",
     "moment": "^2.30.1",
