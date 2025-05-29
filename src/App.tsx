@@ -12,22 +12,12 @@ import Buttons from "./pages/UiElements/Buttons";
 import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
-import BasicTables from "./pages/Tables/BasicTables";
 import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import RatePage from "./pages/Rate/rate";
-import TeachersPage from "./pages/People/Teachers";
-import StudentsPage from "./pages/People/Students";
-import GroupsPage from "./pages/People/Groups";
-import SubjectsPage from "./pages/Test/Subjects";
-import BooksPage from "./pages/Test/Books";
-import SectionsPage from "./pages/Test/Sections";
-import ResultsPage from "./pages/Test/Results";
-import TestsPage from "./pages/Test/Tests";
-import PathsPage from "./pages/sidebar/paths";
+
 import FirmsPage from "./pages/sidebar/firms";
 import AdminsPage from "./pages/sidebar/admins";
 import UsersPage from "./pages/sidebar/users";
@@ -36,6 +26,7 @@ import ChatPage from "./pages/chat";
 import ScoringRequestsPage from "./pages/sidebar/scoring-request";
 import ScoringContractsPage from "./pages/sidebar/scoring-contracts";
 import CreditsPage from "./pages/sidebar/credits";
+import ProductsPage from "./pages/sidebar/products";
 
 export default function App() {
   return (
@@ -59,6 +50,8 @@ export default function App() {
             <Route index path="/users" element={<UsersPage />} />
 
             <Route index path="/credits" element={<CreditsPage />} />
+
+            <Route index path="/products" element={<ProductsPage />} />
 
 
              <Route index path="/chat" element={<ChatPage />} />
