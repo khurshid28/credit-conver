@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Message {
+export interface Message {
   from: 'admin' | 'client';
   text: string;
   time: string;
