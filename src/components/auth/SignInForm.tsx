@@ -25,10 +25,10 @@ export default function SignInForm() {
         <div>
           <div className="mb-5 sm:mb-8">
             <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Sign In
+              Kirish
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-             Welcome!
+             Xush kelibsiz!
             </p>
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function SignInForm() {
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                    Parol <span className="text-error-500">*</span>{" "}
                   </Label>
                   <div className="relative">
                     <Input
@@ -129,7 +129,7 @@ export default function SignInForm() {
                 </div> */}
                 <div>
                   <Button className="w-full mt-8" size="sm" onClick={()=> navigate("/")}>
-                    Sign in
+                    Kirish
                   </Button>
                 </div>
               </div>

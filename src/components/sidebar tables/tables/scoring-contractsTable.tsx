@@ -213,7 +213,7 @@ import {
     }, [currentPage, tableData]);
   
     // const Subject_options = [
-    //   { value: "ALL FILLIAL", label: "ALL FILLIAL" },
+    //   { value: "Barcha filial", label: "Barcha filial" },
     //   { value: "Birlik", label: "Birlik" },
     //   { value: "Nurafshon universal", label: "Nurafshon universal" },
     //   { value: "Olmaliq universal", label: "Olmaliq universal" },
@@ -231,7 +231,7 @@ import {
     //   { value: "Mustaqillik", label: "Mustaqillik" },
     // ];
   
-    //   let [subjectoptionValue, setSubjectoptionValue] = useState("ALL FILLIAL");
+    //   let [subjectoptionValue, setSubjectoptionValue] = useState("Barcha filial");
   
     //   const handleSelectSubjectChange = (value: string) => {
     //     setSubjectoptionValue(value);
@@ -247,7 +247,7 @@ import {
     useEffect(() => {
       setCurrentPage(1);
   
-      // if (subjectoptionValue == "ALL FILLIAL") {
+      // if (subjectoptionValue == "Barcha filial") {
       //   settableData(statictableData);
       // } else {
       //   settableData(
@@ -261,7 +261,7 @@ import {
         <div className="max-w-full overflow-x-auto">
           <div className="px-5 py-3  flex flex-row justify-between items-center border-b border-gray-100 dark:border-white/[0.05]">
             <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
-              <span>Show</span>
+             <span>Ko'rsatish</span>
   
               <Select
                 options={options}
@@ -269,7 +269,6 @@ import {
                 className="dark:bg-dark-900"
                 defaultValue="5"
               />
-              <span>entries</span>
             </div>
             {/* <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
               <Select
@@ -352,7 +351,7 @@ import {
                   isHeader
                   className="px-5 py-3 font-medium  text-start text-theme-xs text-gray-800 dark:text-white/90"
                 >
-                  Actions
+                  Amal
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -415,7 +414,7 @@ import {
                       {order.status === "Success"
                         ? "Tugatilgan"
                         : order.status === "Pending"
-                        ? "Kutilmoqda"
+                        ? "Jarayonda"
                         : "Bekor qilingan"}
                     </Badge>
                   </TableCell>
@@ -482,11 +481,7 @@ import {
               <ArrowRightIcon className=" fill-gray-500  dark:fill-gray-400 scale-200" />
             </Button>
           </div>
-          <div>
-            Showing {(currentPage - 1) * +optionValue + 1} to{" "}
-            {Math.min(tableData.length, currentPage * +optionValue)} of{" "}
-            {tableData.length} entries
-          </div>
+          <div> {((currentPage - 1) * +optionValue)  + 1} dan {Math.min(statictableData.length, currentPage  * +optionValue)} gacha,  {statictableData.length} ta shartnoma</div>
         </div>
   
         <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
@@ -558,7 +553,7 @@ import {
                   Close
                 </Button>
                 <Button size="sm" onClick={handleAdding}>
-                  Saves
+                  Saqlash
                 </Button>
               </div>
             </form>

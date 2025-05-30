@@ -33,7 +33,7 @@ export default function UserMetaCard() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center order-2 gap-2 grow xl:order-3 xl:justify-end">
+            {/* <div className="flex items-center order-2 gap-2 grow xl:order-3 xl:justify-end">
               <a
                 href="https://www.facebook.com/PimjoHQ"
                 target="_blank"
@@ -117,7 +117,7 @@ export default function UserMetaCard() {
                   />
                 </svg>
               </a>
-            </div>
+            </div> */}
           </div>
           <button
             onClick={openModal}
@@ -138,7 +138,7 @@ export default function UserMetaCard() {
                 fill=""
               />
             </svg>
-            Edit
+            Sozlash
           </button>
         </div>
       </div>
@@ -222,10 +222,10 @@ export default function UserMetaCard() {
             </div>
             <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
               <Button size="sm" variant="outline" onClick={closeModal}>
-                Close
+                Yopish
               </Button>
               <Button size="sm" onClick={handleSave}>
-                Save Changes
+                Saqlash
               </Button>
             </div>
           </form>

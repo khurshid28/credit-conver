@@ -161,12 +161,12 @@ export default function ScoringRequestsPage() {
 
   return (
     <>
-      <PageMeta title="Arizalar | HC Dashboard" description="HC Dashboard" />
+      <PageMeta title="Arizalar | HK Dashboard" description="HK Dashboard" />
       <PageBreadcrumb pageTitle="Arizalar" />
 
       <div className="space-y-6 ">
         <ComponentCard
-          title="Arizalar Table"
+          title="Arizalar jadvali"
           action={
             <div className="flex flex-row gap-4">
               <div>
@@ -175,7 +175,7 @@ export default function ScoringRequestsPage() {
                   variant="outline"
                   endIcon={<DownloadIcon className="size-5 fill-white" />}
                 >
-                  Download
+                  Yuklash
                 </Button>
               </div>
               <Button
@@ -475,7 +475,7 @@ export default function ScoringRequestsPage() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

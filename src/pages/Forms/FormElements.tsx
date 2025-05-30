@@ -15,8 +15,8 @@ export default function FormElements() {
   return (
     <div>
       <PageMeta
-        title="React.js Form Elements Dashboard | HC Dashboard"
-        description="This is React.js Form Elements  Dashboard page - HC Dashboard"
+        title="React.js Form Elements Dashboard | HK Dashboard"
+        description="This is React.js Form Elements  Dashboard page - HK Dashboard"
       />
       <PageBreadcrumb pageTitle="From Elements" />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">

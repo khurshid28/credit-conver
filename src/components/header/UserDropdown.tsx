@@ -81,7 +81,7 @@ export default function UserDropdown() {
                   fill=""
                 />
               </svg>
-              Edit profile
+              Akkount sozlash
             </DropdownItem>
           </li>
           {/* <li>
@@ -131,7 +131,7 @@ export default function UserDropdown() {
                   fill=""
                 />
               </svg>
-              Support
+              Qo'llab quvvatlash
             </DropdownItem>
           </li>
         </ul>
@@ -154,7 +154,7 @@ export default function UserDropdown() {
               fill=""
             />
           </svg>
-          Sign out
+          Chiqish
         </Link>
       </Dropdown>
     </div>

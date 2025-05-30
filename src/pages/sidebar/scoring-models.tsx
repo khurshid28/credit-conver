@@ -183,14 +183,14 @@ export default function ScoringModelsPage() {
   return (
     <>
       <PageMeta
-        title="Models | HC Dashboard"
-        description="HC Dashboard"
+        title="Modellar | HK Dashboard"
+        description="HK Dashboard"
       />
-      <PageBreadcrumb pageTitle="Models" />
+      <PageBreadcrumb pageTitle="Modellar" />
 
       <div className="space-y-6 ">
         <ComponentCard
-          title="Models Table"
+          title="Modellar ro'yxati"
           action={
             <div className="flex flex-row gap-4">
               <div>
@@ -199,7 +199,7 @@ export default function ScoringModelsPage() {
                   variant="outline"
                   endIcon={<DownloadIcon className="size-5 fill-white" />}
                 >
-                  Download
+                  Yuklash
                 </Button>
               </div>
               <Button
@@ -211,7 +211,7 @@ export default function ScoringModelsPage() {
                   openModal();
                 }}
               >
-                Add Model
+                Model yaratish
               </Button>
             </div>
           }
@@ -223,7 +223,7 @@ export default function ScoringModelsPage() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add Model
+              Model yaratish
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Create new Model with full details.
@@ -234,7 +234,7 @@ export default function ScoringModelsPage() {
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2 max-h-[380px]">
 
                 <div>
-                  <Label>Product</Label>
+                  <Label>Produkt</Label>
                   <Select
                     options={all_products}
                     className="dark:bg-dark-900"
@@ -420,7 +420,7 @@ export default function ScoringModelsPage() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

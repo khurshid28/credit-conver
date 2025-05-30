@@ -196,7 +196,7 @@ import MultiSelect from "../../form/MultiSelect";
         <div className="max-w-full overflow-x-auto">
           <div className="px-5 py-3  flex flex-row justify-between items-center border-b border-gray-100 dark:border-white/[0.05]">
             <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
-              <span>Show</span>
+             <span>Ko'rsatish</span>
   
               <Select
                 options={options}
@@ -204,7 +204,6 @@ import MultiSelect from "../../form/MultiSelect";
                 className="dark:bg-dark-900"
                 defaultValue="5"
               />
-              <span>entries</span>
             </div>
            
           </div>
@@ -236,7 +235,7 @@ import MultiSelect from "../../form/MultiSelect";
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Actions
+                  Amal
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -350,9 +349,7 @@ import MultiSelect from "../../form/MultiSelect";
             </Button>
           </div>
           <div>
-            Showing {(currentPage - 1) * +optionValue + 1} to{" "}
-            {Math.min(tableData.length, currentPage * +optionValue)} of{" "}
-            {tableData.length} entries
+            <div> {((currentPage - 1) * +optionValue)  + 1} dan {Math.min(statictableData.length, currentPage  * +optionValue)} gacha,  {statictableData.length} ta yo'nalish</div>
           </div>
         </div>
   
@@ -420,7 +417,7 @@ import MultiSelect from "../../form/MultiSelect";
                   Close
                 </Button>
                 <Button size="sm" onClick={handleAdding}>
-                  Saves
+                  Saqlash
                 </Button>
               </div>
             </form>

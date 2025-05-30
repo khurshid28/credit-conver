@@ -58,16 +58,16 @@ export default function UsersPage() {
   return (
     <>
       <PageMeta
-        title="Users | HC Dashboard"
-        description="HC Dashboard"
+        title="Foydalanuvchilar | HK Dashboard"
+        description="HK Dashboard"
       />
-      <PageBreadcrumb pageTitle="Users" />
+      <PageBreadcrumb pageTitle="Foydalanuvchilar" />
    
        <div className="space-y-6 ">
        
        
          <ComponentCard
-          title="Users Table"
+          title="Foydalanuvchilar ro'yxati"
           action={
             <>
               <Button
@@ -79,7 +79,7 @@ export default function UsersPage() {
                   openModal()
                 }}
               >
-                Add User
+                 Foydalanuvchi qo'shish
               </Button>
             </>
           }
@@ -91,7 +91,7 @@ export default function UsersPage() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add User
+              Foydalanuvchi qo'shish
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Create new User with full details.
@@ -177,10 +177,10 @@ export default function UsersPage() {
             </div>
             <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
               <Button size="sm" variant="outline" onClick={closeModal}>
-                Close
+                Yopish
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

@@ -86,8 +86,8 @@ export default function ProductsPage() {
 
   return (
     <>
-      <PageMeta title="Products | HC Dashboard" description="HC Dashboard" />
-      <PageBreadcrumb pageTitle="Products" />
+      <PageMeta title="Kredit turlari | HK Dashboard" description="HK Dashboard" />
+      <PageBreadcrumb pageTitle="Kredit turlari" />
 
       <div className="space-y-6 ">
        <ProductsList/>

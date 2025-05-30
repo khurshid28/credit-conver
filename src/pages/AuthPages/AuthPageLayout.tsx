@@ -21,13 +21,13 @@ export default function AuthLayout({
                 <img
                   width={120}
                   height={48}
-                  
-                  src="/images/logo/logo-icon.svg"
+                  className="rounded-4xl"
+                  src="/images/logo/logo-icon.webp"
                   alt="Logo"
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Welcome HC
+                 Hayot Kredit tizimi
               </p>
             </div>
           </div>

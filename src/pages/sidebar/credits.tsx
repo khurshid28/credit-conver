@@ -163,7 +163,7 @@ export default function CreditsPage() {
 
   return (
     <>
-      <PageMeta title="Kreditlar | HC Dashboard" description="HC Dashboard" />
+      <PageMeta title="Kreditlar | HK Dashboard" description="HK Dashboard" />
       <PageBreadcrumb pageTitle="Kreditlar" />
 
       <div className="space-y-6 ">
@@ -177,7 +177,7 @@ export default function CreditsPage() {
                   variant="outline"
                   endIcon={<DownloadIcon className="size-5 fill-white" />}
                 >
-                  Download
+                  Yuklash
                 </Button>
               </div>
              

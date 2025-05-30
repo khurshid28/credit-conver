@@ -16,7 +16,8 @@ export interface Admin {
   lastName: string;
   phone: string;
   password: string;
-  Fillial_id?: string
+  Fillial_id?: string;
+  role :string;
 }
 export default function AdminsPage() {
   const { isOpen, openModal, closeModal } = useModal();
@@ -33,6 +34,7 @@ export default function AdminsPage() {
     lastName: "",
     phone: "901234567",
     password: "12345678",
+    role :""
      
   };
 
@@ -58,16 +60,16 @@ export default function AdminsPage() {
   return (
     <>
       <PageMeta
-        title="Admins | HC Dashboard"
-        description="HC Dashboard"
+        title="Adminlar | HK Dashboard"
+        description="HK Dashboard"
       />
-      <PageBreadcrumb pageTitle="Admins" />
+      <PageBreadcrumb pageTitle="Adminlar" />
    
        <div className="space-y-6 ">
        
        
          <ComponentCard
-          title="Admins Table"
+          title="Adminlar jadvali"
           action={
             <>
               <Button
@@ -79,7 +81,7 @@ export default function AdminsPage() {
                   openModal()
                 }}
               >
-                Add Admin
+                Admin qo'shish
               </Button>
             </>
           }
@@ -91,7 +93,7 @@ export default function AdminsPage() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add Admin
+               Admin qo'shish
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Create new Admin with full details.
@@ -180,7 +182,7 @@ export default function AdminsPage() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

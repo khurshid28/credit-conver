@@ -59,7 +59,7 @@ export default function PathsPage() {
 
   return (
     <>
-      <PageMeta title="Paths | HC Dashboard" description="HC Dashboard" />
+      <PageMeta title="Paths | HK Dashboard" description="HK Dashboard" />
       <PageBreadcrumb pageTitle="Paths" />
 
       <div className="space-y-6 ">
@@ -75,7 +75,7 @@ export default function PathsPage() {
                 variant="outline"
                 endIcon={<DownloadIcon className="size-5 fill-white" />}
               >
-                Download
+                Yuklash
               </Button>
             </div>
               <Button
@@ -131,7 +131,7 @@ export default function PathsPage() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

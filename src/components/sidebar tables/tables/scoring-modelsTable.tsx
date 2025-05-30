@@ -143,7 +143,7 @@ export default function ScoringModelsTable() {
   }, [currentPage, tableData]);
 
   // const Subject_options = [
-  //   { value: "ALL FILLIAL", label: "ALL FILLIAL" },
+  //   { value: "Barcha filial", label: "Barcha filial" },
   //   { value: "Birlik", label: "Birlik" },
   //   { value: "Nurafshon universal", label: "Nurafshon universal" },
   //   { value: "Olmaliq universal", label: "Olmaliq universal" },
@@ -161,7 +161,7 @@ export default function ScoringModelsTable() {
   //   { value: "Mustaqillik", label: "Mustaqillik" },
   // ];
 
-  let [subjectoptionValue, setSubjectoptionValue] = useState("ALL FILLIAL");
+  let [subjectoptionValue, setSubjectoptionValue] = useState("Barcha filial");
 
   const handleSelectSubjectChange = (value: string) => {
     setSubjectoptionValue(value);
@@ -177,7 +177,7 @@ export default function ScoringModelsTable() {
   useEffect(() => {
     setCurrentPage(1);
 
-    // if (subjectoptionValue == "ALL FILLIAL") {
+    // if (subjectoptionValue == "Barcha filial") {
     //   settableData(statictableData);
     // } else {
     //   settableData(
@@ -191,15 +191,14 @@ export default function ScoringModelsTable() {
       <div className="max-w-full overflow-x-auto">
         <div className="px-5 py-3  flex flex-row justify-between items-center border-b border-gray-100 dark:border-white/[0.05]">
           <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
-            <span>Show</span>
-
-            <Select
-              options={options}
-              onChange={handleSelectChange}
-              className="dark:bg-dark-900"
-              defaultValue="5"
-            />
-            <span>entries</span>
+            <span>Ko'rsatish</span>
+  
+              <Select
+                options={options}
+                onChange={handleSelectChange}
+                className="dark:bg-dark-900"
+                defaultValue="5"
+              />
           </div>
           {/* <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
             <Select
@@ -215,23 +214,23 @@ export default function ScoringModelsTable() {
             <TableRow>
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
+                className="px-5 py-3 font-medium  text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
-                Name
+                Model nomi
               </TableCell>
 
 
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
+                className="px-5 py-3 font-medium  text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
-                Product
+                Produkt
               </TableCell>
 
 
               <TableCell
                 isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
+                className="px-5 py-3 font-medium  text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
                 Kredit muddati
               </TableCell>
@@ -271,7 +270,7 @@ export default function ScoringModelsTable() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-gray-800 text-theme-sm dark:text-white/90"
               >
-                Actions
+                Amal
               </TableCell>
             </TableRow>
           </TableHeader>
@@ -399,11 +398,7 @@ export default function ScoringModelsTable() {
             <ArrowRightIcon className=" fill-gray-500  dark:fill-gray-400 scale-200" />
           </Button>
         </div>
-        <div>
-          Showing {(currentPage - 1) * +optionValue + 1} to{" "}
-          {Math.min(tableData.length, currentPage * +optionValue)} of{" "}
-          {tableData.length} entries
-        </div>
+         <div> {((currentPage - 1) * +optionValue)  + 1} dan {Math.min(statictableData.length, currentPage  * +optionValue)} gacha,  {statictableData.length} ta model</div>
       </div>
 
       <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
@@ -472,7 +467,7 @@ export default function ScoringModelsTable() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

@@ -34,18 +34,18 @@ export default function MonthlySalesChart() {
     },
     xaxis: {
       categories: [
-        "Jan",
-        "Feb",
+        "Yan",
+        "Fev",
         "Mar",
         "Apr",
         "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+        "Iyun",
+        "Iyul",
+        "Avg",
+        "Sen",
+        "Okt",
+        "Noy",
+        "Dek",
       ],
       axisBorder: {
         show: false,
@@ -87,12 +87,12 @@ export default function MonthlySalesChart() {
   };
   const series = [
     {
-      name: "Limit",
+      name: "Muvafaqqiyatli",
       data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
     },
     {
-      name: "Finished",
-      data: [54, 89, 168, 102, 45, 103, 65, 80, 71, 203, 106, 79],
+      name: "Tugatilgan",
+      data: [54, 289, 168, 203, 45, 103, 65, 80, 71, 203, 106, 79],
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -108,7 +108,7 @@ export default function MonthlySalesChart() {
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Scoring 
+          Skoring 
         </h3>
         <div className="relative inline-block">
           <button className="dropdown-toggle" onClick={toggleDropdown}>

@@ -163,7 +163,7 @@ export default function ScoringContractsPage() {
 
   return (
     <>
-      <PageMeta title="Shartnomalar | HC Dashboard" description="HC Dashboard" />
+      <PageMeta title="Shartnomalar | HK Dashboard" description="HK Dashboard" />
       <PageBreadcrumb pageTitle="Shartnomalar" />
 
       <div className="space-y-6 ">
@@ -177,7 +177,7 @@ export default function ScoringContractsPage() {
                   variant="outline"
                   endIcon={<DownloadIcon className="size-5 fill-white" />}
                 >
-                  Download
+                  Yuklash
                 </Button>
               </div>
              

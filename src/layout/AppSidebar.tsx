@@ -44,7 +44,7 @@ const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Statistics", path: "/", pro: false }],
+    subItems: [{ name: "Statistika", path: "/", pro: false }],
   },
 
 
@@ -64,8 +64,8 @@ const navItems: NavItem[] = [
     icon: <GroupIcon />,
     name: "Adminstator",
     subItems: [
-      { name: "Admins", path: "/admins", pro: false },
-      { name: "Users", path: "/users", pro: false },
+      { name: "Adminlar", path: "/admins", pro: false },
+      { name: "Xodimlar", path: "/users", pro: false },
     ],
   },
 
@@ -85,7 +85,7 @@ const navItems: NavItem[] = [
   //   path: "/profile",
   // },
    {
-    name: "Products",
+    name: "Kredit turlari",
     icon: <BoxIcon />,
     path: "/products",
     // subItems: [
@@ -97,11 +97,10 @@ const navItems: NavItem[] = [
     // ],
   },
   {
-    name: "Scoring",
+    name: "Skoring",
     icon: <CheckCircleIcon />,
     subItems: [
-      { name: "Models", path: "/scoring-models", pro: false },
-    
+      { name: "Modellar", path: "/scoring-models", pro: false },
       { name: "Arizalar", path: "/scoring-requests", pro: false },
       { name: "Shartnomalar", path: "/scoring-contracts", pro: false },
     
@@ -111,7 +110,7 @@ const navItems: NavItem[] = [
  
 
    {
-    name: "Credits",
+    name: "Kreditlar",
     icon: <PieChartIcon />,
     path: "/credits",
   },
@@ -137,7 +136,7 @@ const navItems: NavItem[] = [
 
   {
     icon: <ChatIcon />,
-    name: "Chats",
+    name: "Chat",
     path: "/chat",
   },
 
@@ -420,31 +419,31 @@ const AppSidebar: React.FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <div className="flex flex-row gap-4 items-center">
               <img
-                className="dark:hidden"
-                src="/images/logo/logo-icon.svg"
+                className="dark:hidden  rounded-[24px]"
+                src="/images/logo/logo-icon.webp"
                 alt="Logo"
                 // width={150}
-                height={60}
+                width={90}
               />
               <img
-                className="hidden dark:block"
-                src="/images/logo/logo-icon.svg"
+                className="hidden dark:block rounded-[24px]"
+                src="/images/logo/logo-icon.webp"
                 alt="Logo"
-                // width={150}
-                height={60}
+                width={90}
               />
                 <p className="text-center font-medium  text-theme-md hover:text-gray-900   dark:text-white">
-                HC
+                Hayot Bank
               </p>
 
              
             </div>
           ) : (
             <img
-              src="/images/logo/logo-icon.svg"
+              className="rounded-[9px]"
+              src="/images/logo/logo-icon.webp"
               alt="Logo"
-              width={32}
-              height={32}
+              width={36}
+              height={36}
             />
           )}
         </Link>

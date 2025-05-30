@@ -59,13 +59,13 @@ export default function FirmsPage() {
 
   return (
     <>
-      <PageMeta title="Firms | HC Dashboard" description="HC Dashboard" />
-      <PageBreadcrumb pageTitle="Firms" />
+      <PageMeta title="Korxonalar | HK Dashboard" description="HK Dashboard" />
+      <PageBreadcrumb pageTitle="Korxonalar" />
 
       <div className="space-y-6 ">
         
         <ComponentCard
-          title="Firms Table"
+          title="Korxonalar jadvali"
           action={
             <div className="flex flex-row gap-4">
               <div>
@@ -75,7 +75,7 @@ export default function FirmsPage() {
                 variant="outline"
                 endIcon={<DownloadIcon className="size-5 fill-white" />}
               >
-                Download
+                Yuklash
               </Button>
             </div>
               <Button
@@ -87,7 +87,7 @@ export default function FirmsPage() {
                   openModal();
                 }}
               >
-                Add Firm
+                Korxona qo'shish
               </Button>
             </div>
           }
@@ -99,7 +99,7 @@ export default function FirmsPage() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add Firm
+              Korxona qo'shish
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Create new Firm with full details.
@@ -156,7 +156,7 @@ export default function FirmsPage() {
                 Close
               </Button>
               <Button size="sm" onClick={handleAdding}>
-                Saves
+                Saqlash
               </Button>
             </div>
           </form>

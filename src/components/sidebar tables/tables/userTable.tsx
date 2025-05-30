@@ -46,6 +46,10 @@ import FileInput from "../../form/input/FileInput";
     };
     status: string;
     showPassword: boolean;
+    role : string;
+    fillial : {
+      name :string;
+    }
   }
   
   // Define the table data using the interface
@@ -70,6 +74,10 @@ import FileInput from "../../form/input/FileInput";
         ],
       },
       status: "Cancel",
+      role : "Operator",
+      fillial :{
+        name :"Chilonzor"
+      }
     },
     {
       id: 5,
@@ -89,6 +97,11 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Mirobod"
+      }
+      
     },
     {
       id: 5,
@@ -108,6 +121,10 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Uchtepa"
+      }
     },
     {
       id: 5,
@@ -127,6 +144,10 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Mirzo Ulug'bek"
+      }
     },
     {
       id: 5,
@@ -146,6 +167,10 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Yakkasaroy"
+      }
     },
     {
       id: 5,
@@ -165,6 +190,10 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Olmazor"
+      }
     },
     {
       id: 5,
@@ -184,307 +213,13 @@ import FileInput from "../../form/input/FileInput";
       },
       status: "Active",
       showPassword: false,
+       role : "Operator",
+      fillial :{
+        name :"Shayxontohur"
+      }
     },
   
-    {
-      id: 5,
-      user: {
-        image: "/images/user/user-21.jpg",
-        name: "Carla George",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-31.jpg",
-          "/images/user/user-32.jpg",
-          "/images/user/user-33.jpg",
-        ],
-      },
-      status: "Active",
-      showPassword: false,
-    },
-    {
-      id: 5,
-      user: {
-        image: "/images/user/user-21.jpg",
-        name: "Carla George",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-31.jpg",
-          "/images/user/user-32.jpg",
-          "/images/user/user-33.jpg",
-        ],
-      },
-      status: "Active",
-      showPassword: false,
-    },
-    {
-      id: 1,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Xurshid Ismoilov",
-        phone: "+998(95)064-28-27",
-        password: "11223344",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-01-04"),
-      team: {
-        images: [
-          "/images/user/user-22.jpg",
-          "/images/user/user-23.jpg",
-          "/images/user/user-24.jpg",
-        ],
-      },
-      status: "Active",
-    },
-    {
-      id: 2,
-      user: {
-        image: "/images/user/user-18.jpg",
-        name: "Kaiya George",
-        phone: "+998(95)064-28-27",
-        password: "66223344",
-      },
-      createdAt: new Date("2025-02-15"),
-      showPassword: false,
-      team: {
-        images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-      },
-      status: "Pending",
-    },
-    {
-      id: 3,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Zain Geidt",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-02-16"),
-      team: {
-        images: ["/images/user/user-27.jpg"],
-      },
-      status: "Active",
-    },
-    {
-      id: 4,
-      user: {
-        image: "/images/user/user-20.jpg",
-        name: "Abram Schleifer",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-28.jpg",
-          "/images/user/user-29.jpg",
-          "/images/user/user-30.jpg",
-        ],
-      },
-      status: "Cancel",
-    },
-    {
-      id: 5,
-      user: {
-        image: "/images/user/user-21.jpg",
-        name: "Carla George",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-31.jpg",
-          "/images/user/user-32.jpg",
-          "/images/user/user-33.jpg",
-        ],
-      },
-      status: "Active",
-      showPassword: false,
-    },
-    {
-      id: 1,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Xurshid Ismoilov",
-        phone: "+998(95)064-28-27",
-        password: "11223344",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-01-04"),
-      team: {
-        images: [
-          "/images/user/user-22.jpg",
-          "/images/user/user-23.jpg",
-          "/images/user/user-24.jpg",
-        ],
-      },
-      status: "Active",
-    },
-    {
-      id: 2,
-      user: {
-        image: "/images/user/user-18.jpg",
-        name: "Kaiya George",
-        phone: "+998(95)064-28-27",
-        password: "66223344",
-      },
-      createdAt: new Date("2025-02-15"),
-      showPassword: false,
-      team: {
-        images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-      },
-      status: "Pending",
-    },
-    {
-      id: 3,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Zain Geidt",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-02-16"),
-      team: {
-        images: ["/images/user/user-27.jpg"],
-      },
-      status: "Active",
-    },
-    {
-      id: 4,
-      user: {
-        image: "/images/user/user-20.jpg",
-        name: "Abram Schleifer",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-28.jpg",
-          "/images/user/user-29.jpg",
-          "/images/user/user-30.jpg",
-        ],
-      },
-      status: "Cancel",
-    },
-    {
-      id: 5,
-      user: {
-        image: "/images/user/user-21.jpg",
-        name: "Carla George",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-31.jpg",
-          "/images/user/user-32.jpg",
-          "/images/user/user-33.jpg",
-        ],
-      },
-      status: "Active",
-      showPassword: false,
-    },
-    {
-      id: 1,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Xurshid Ismoilov",
-        phone: "+998(95)064-28-27",
-        password: "11223344",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-01-04"),
-      team: {
-        images: [
-          "/images/user/user-22.jpg",
-          "/images/user/user-23.jpg",
-          "/images/user/user-24.jpg",
-        ],
-      },
-      status: "Active",
-    },
-    {
-      id: 2,
-      user: {
-        image: "/images/user/user-18.jpg",
-        name: "Kaiya George",
-        phone: "+998(95)064-28-27",
-        password: "66223344",
-      },
-      createdAt: new Date("2025-02-15"),
-      showPassword: false,
-      team: {
-        images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-      },
-      status: "Pending",
-    },
-    {
-      id: 3,
-      user: {
-        image: "/images/user/user-17.jpg",
-        name: "Zain Geidt",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-02-16"),
-      team: {
-        images: ["/images/user/user-27.jpg"],
-      },
-      status: "Active",
-    },
-    {
-      id: 4,
-      user: {
-        image: "/images/user/user-20.jpg",
-        name: "Abram Schleifer",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      showPassword: false,
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-28.jpg",
-          "/images/user/user-29.jpg",
-          "/images/user/user-30.jpg",
-        ],
-      },
-      status: "Cancel",
-    },
-    {
-      id: 5,
-      user: {
-        image: "/images/user/user-21.jpg",
-        name: "Carla George",
-        phone: "+998(95)064-28-27",
-        password: "44662244",
-      },
-      createdAt: new Date("2025-03-02"),
-      team: {
-        images: [
-          "/images/user/user-31.jpg",
-          "/images/user/user-32.jpg",
-          "/images/user/user-33.jpg",
-        ],
-      },
-      status: "Active",
-      showPassword: false,
-    },
+    
   ];
   
   export default function UsersTable() {
@@ -577,7 +312,7 @@ import FileInput from "../../form/input/FileInput";
         <div className="max-w-full overflow-x-auto">
           <div className="px-5 py-3  flex flex-row justify-between items-center border-b border-gray-100 dark:border-white/[0.05]">
             <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
-              <span>Show</span>
+             <span>Ko'rsatish</span>
   
               <Select
                 options={options}
@@ -585,7 +320,6 @@ import FileInput from "../../form/input/FileInput";
                 className="dark:bg-dark-900"
                 defaultValue="5"
               />
-              <span>entries</span>
             </div>
             <div>
               {" "}
@@ -594,7 +328,7 @@ import FileInput from "../../form/input/FileInput";
                 variant="outline"
                 endIcon={<DownloadIcon className="size-5 fill-white" />}
               >
-                Download
+                Yuklash
               </Button>
             </div>
           </div>
@@ -606,19 +340,31 @@ import FileInput from "../../form/input/FileInput";
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Users
+                  Foydalanuvchi
+                </TableCell>
+                 <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Lavozim
+                </TableCell>
+                 <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Filial
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Added
+                  Sana
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Password
+                  Parol
                 </TableCell>
                 <TableCell
                   isHeader
@@ -630,7 +376,7 @@ import FileInput from "../../form/input/FileInput";
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                 >
-                  Actions
+                  Amal
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -659,6 +405,13 @@ import FileInput from "../../form/input/FileInput";
                       </div>
                     </div>
                   </TableCell>
+                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    {order.role}
+                  </TableCell>
+                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                        {order.fillial.name}
+
+                         </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     {Moment(order.createdAt).format("MMMM DD, yyyy")}
                   </TableCell>
@@ -774,8 +527,7 @@ import FileInput from "../../form/input/FileInput";
               <ArrowRightIcon className=" fill-gray-500  dark:fill-gray-400 scale-200" />
             </Button>
           </div>
-          <div>Showing {((currentPage - 1) * +optionValue)  + 1} to {Math.min(statictableData.length, currentPage  * +optionValue)} of {statictableData.length} entries</div>
-        </div>
+         <div> {((currentPage - 1) * +optionValue)  + 1} dan {Math.min(statictableData.length, currentPage  * +optionValue)} gacha,  {statictableData.length} ta foydalanuvchi</div></div>
   
         <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
           <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
@@ -870,7 +622,7 @@ import FileInput from "../../form/input/FileInput";
                   Close
                 </Button>
                 <Button size="sm" onClick={handleAdding}>
-                  Saves
+                  Saqlash
                 </Button>
               </div>
             </form>
