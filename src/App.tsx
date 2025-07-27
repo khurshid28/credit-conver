@@ -27,6 +27,7 @@ import ScoringRequestsPage from "./pages/sidebar/scoring-request";
 import ScoringContractsPage from "./pages/sidebar/scoring-contracts";
 import CreditsPage from "./pages/sidebar/credits";
 import ProductsPage from "./pages/sidebar/products";
+import PathsPage from "./pages/sidebar/paths";
 
 export default function App() {
   return (
@@ -42,31 +43,33 @@ export default function App() {
             {/* <Route path="/teachers" element={<TeachersPage />} />
              <Route path="/groups" element={< GroupsPage />} />
              <Route path="/students" element={<StudentsPage />} /> */}
-           <Route index path="/scoring-models" element={<ScoringModelsPage />} />
-             <Route index path="/scoring-requests" element={<ScoringRequestsPage />} />
-             <Route index path="/scoring-contracts" element={<ScoringContractsPage />} />
 
             <Route index path="/admins" element={<AdminsPage />} />
             <Route index path="/users" element={<UsersPage />} />
+            <Route index path="/products" element={<ProductsPage />} />
 
             <Route index path="/credits" element={<CreditsPage />} />
 
-            <Route index path="/products" element={<ProductsPage />} />
+            <Route
+              index
+              path="/scoring-models"
+              element={<ScoringModelsPage />}
+            />
+            <Route
+              index
+              path="/scoring-requests"
+              element={<ScoringRequestsPage />}
+            />
+            <Route
+              index
+              path="/scoring-contracts"
+              element={<ScoringContractsPage />}
+            />
 
+            <Route index path="/paths" element={<PathsPage />} />
 
-             <Route index path="/chat" element={<ChatPage />} />
+            <Route index path="/chat" element={<ChatPage />} />
 
-            {/* People Page */}
-            {/* <Route path="/subjects" element={<SubjectsPage />} />
-            <Route path="/books" element={<BooksPage />} />
-            <Route path="/sections" element={<SectionsPage />} />
-            <Route path="/tests" element={<TestsPage />} />
-
-            <Route path="/results" element={<ResultsPage />} /> */}
-
-            {/* <Route index path="/rate" element={<RatePage />} /> */}
-
-            {/* <Route index path="/paths" element={<PathsPage />} /> */}
             <Route index path="/firms-mchj" element={<FirmsPage />} />
             <Route index path="/firms-yatt" element={<FirmsPage />} />
 
@@ -75,23 +78,7 @@ export default function App() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
 
-            {/* Forms */}
-            {/* <Route path="/form-elements" element={<FormElements />} /> */}
-
-            {/* Tables */}
-            {/* <Route path="/basic-tables" element={<BasicTables />} /> */}
-
-            {/* Ui Elements */}
-            {/* <Route path="/alerts" element={<Alerts />} />
-            <Route path="/avatars" element={<Avatars />} />
-            <Route path="/badge" element={<Badges />} />
-            <Route path="/buttons" element={<Buttons />} />
-            <Route path="/images" element={<Images />} /> */}
-            {/* <Route path="/videos" element={<Videos />} /> */}
-
-            {/* Charts */}
-            {/* <Route path="/line-chart" element={<LineChart />} />
-            <Route path="/bar-chart" element={<BarChart />} /> */}
+           
           </Route>
 
           {/* Auth Layout */}

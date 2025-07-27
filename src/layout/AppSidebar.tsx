@@ -115,7 +115,7 @@ const navItems: NavItem[] = [
     path: "/credits",
   },
    {
-    name: "Yo'nalishlar",
+    name: "Hujjatlar aylanmasi",
     icon: <FiArrowRightCircle />,
     path: "/paths",
   },

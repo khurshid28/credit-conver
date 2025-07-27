@@ -59,13 +59,13 @@ export default function PathsPage() {
 
   return (
     <>
-      <PageMeta title="Paths | HK Dashboard" description="HK Dashboard" />
-      <PageBreadcrumb pageTitle="Paths" />
+      <PageMeta title="Hujjatlar aylanmasi | HK Dashboard" description="HK Dashboard" />
+      <PageBreadcrumb pageTitle="Hujjatlar aylanmasi" />
 
       <div className="space-y-6 ">
         
         <ComponentCard
-          title="Paths Table"
+          title="Hujjatlar aylanmasi jadvali"
           action={
             <div className="flex flex-row gap-4">
               <div>
@@ -87,7 +87,7 @@ export default function PathsPage() {
                   openModal();
                 }}
               >
-                Add Path
+                Yaratish
               </Button>
             </div>
           }
@@ -99,10 +99,10 @@ export default function PathsPage() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Add Path
+              Yaratish 
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              Create new Path with full details.
+              Create with full details.
             </p>
           </div>
           <form className="flex flex-col">
