@@ -25,6 +25,8 @@ import {
   UserIcon,
   UserCircleIcon,
   DocsIcon,
+  FileIcon,
+  ErrorHexaIcon,
 } from "../../../icons";
 import { useEffect, useState } from "react";
 import { useModal } from "../../../hooks/useModal";
@@ -32,34 +34,37 @@ import Input from "../../form/input/InputField";
 import Label from "../../form/Label";
 import { Modal } from "../../ui/modal";
 import Select from "../../form/Select";
-import { Path } from "../../../pages/sidebar/paths";
 import DropzoneComponent from "../../form/form-elements/DropZone";
 import FileInputExample from "../../form/form-elements/FileInputExample";
 import FileInput from "../../form/input/FileInput";
 import MultiSelect from "../../form/MultiSelect";
-import { FiClock } from "react-icons/fi";
+import {
+  FiAlignRight,
+  FiArrowRight,
+  FiArrowRightCircle,
+  FiCheck,
+  FiCheckCircle,
+  FiClock,
+} from "react-icons/fi";
+import moment from "moment";
+
+export interface Access {
+  name?: string;
+  image?: string;
+  section_id?: string;
+}
 
 interface Order {
   id: number;
   name: string;
-  product: {
-    name: string;
-    date: string;
-    max_amount: string;
-  };
-  createdAt: Date;
-  status: string;
-  authors: Author[];
-}
-
-interface Author {
-  id: number;
-  name: string;
-
+  time: string;
   role: string;
-  expired: string;
+  expired: Date;
   docs?: AuthorDoc[];
+  status: "success" | "panding" | "canceled";
 }
+
+interface Author {}
 
 interface AuthorDoc {
   id: number;
@@ -71,95 +76,107 @@ interface AuthorDoc {
 const statictableData: Order[] = [
   {
     id: 1,
-
-    name: "Model 1",
-    createdAt: new Date("2025-03-02"),
-    status: "Active",
-    product: {
-      name: `Savdoni Moliyalashtirish`,
-      max_amount: "10 mlrd so'mgacha",
-      date: "4 yilgacha"
-    },
-    authors: [
+    name: "Bahodir Qodirov",
+    role: "Kengash Raisi",
+    expired: moment().add(2, "day").toDate(),
+    status: "success",
+    time: "2 kun",
+    docs: [
       {
         id: 1,
-        name: "Bahodir Qodirov",
-        role: "Kengash Raisi",
-        expired: "2 kun",
-        docs: [
-          {
-            id: 1,
-            name: "Firma Guvohnomasi",
-          },
-
-          {
-            id: 2,
-            name: "Ariza",
-          },
-           {
-            id: 3,
-            name: "Garov",
-          },
-        ],
+        name: "Firma Guvohnomasi",
       },
 
       {
         id: 2,
-        name: "Sherzod Mahmudov",
-        role: "Kengash a'zolari",
-        expired: "3 kun",
-        docs: [
-          {
-            id: 3,
-            name: "Pul aylanmasi",
-          },
-
-           {
-            id: 4,
-            name: "Firma direktorining hujjatlari",
-          },
-        ],
+        name: "Ariza",
       },
+      {
+        id: 3,
+        name: "Garov",
+      },
+    ],
+  },
 
-
-       {
-        id: 2,
-        name: "Jasur Kamolov",
-        role: "Rais O'rinbosari",
-        expired: "1 kun",
-        docs: [
-          {
-            id: 4,
-            name: "Pul aylanmasi",
-          },
-           {
-            id: 1,
-            name: "Firma Guvohnomasi",
-          },
-        ],
+  {
+    id: 2,
+    name: "Sherzod Mahmudov",
+    role: "Kengash a'zolari",
+    expired: moment().add(2, "day").toDate(),
+    status: "success",
+    time: "2 kun",
+    docs: [
+      {
+        id: 3,
+        name: "Pul aylanmasi",
       },
 
       {
-        id: 2,
-        name: "Farhod Diyorov",
-        role: "Korporativ mijozlar bilan ishlash D.boshlig'i",
-        expired: "2 kun",
-        docs: [
-          {
-            id: 4,
-            name: "Pul aylanmasi",
-          },
-           {
-            id: 1,
-            name: "Firma Guvohnomasi",
-          },
-        ],
+        id: 4,
+        name: "Firma direktorining hujjatlari",
+      },
+    ],
+  },
+
+  {
+    id: 2,
+    name: "Jasur Kamolov",
+    role: "Rais O'rinbosari",
+    expired: moment().add(5, "hours").toDate(),
+    status: "panding",
+    time: "4 kun",
+    docs: [
+      {
+        id: 4,
+        name: "Pul aylanmasi",
+      },
+      {
+        id: 1,
+        name: "Firma Guvohnomasi",
+      },
+    ],
+  },
+
+  {
+    id: 2,
+    name: "Farhod Diyorov",
+    role: "Korporativ mijozlar bilan ishlash D.boshlig'i",
+    expired: moment().subtract(1, "hour").toDate(),
+    status: "panding",
+    time: "1 kun",
+    docs: [
+      {
+        id: 4,
+        name: "Pul aylanmasi",
+      },
+      {
+        id: 1,
+        name: "Firma Guvohnomasi",
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    name: "Sardor Yunusov",
+    role: "Korporativ mijozlar bilan ishlash D.boshlig'i",
+    expired: moment().subtract(1, "hour").toDate(),
+    status: "canceled",
+    time: "5 kun",
+    docs: [
+      {
+        id: 4,
+        name: "Pul aylanmasi",
+      },
+      {
+        id: 1,
+        name: "Firma Guvohnomasi",
       },
     ],
   },
 ];
 
-export default function PathsTable() {
+export default function AccesssTable() {
   const [tableData, settableData] = useState(statictableData);
 
   const { isOpen, openModal, closeModal } = useModal();
@@ -169,14 +186,14 @@ export default function PathsTable() {
     console.log("handleAdding...");
 
     closeModal();
-    setPath(emptyPath);
+    setAccess(emptyAccess);
   };
-  let emptyPath: Path = {
+  let emptyAccess: Access = {
     name: "",
     image: "",
     section_id: "",
   };
-  let [Path, setPath] = useState<Path>(emptyPath);
+  let [Access, setAccess] = useState<Access>(emptyAccess);
 
   const options = [
     { value: "5", label: "5" },
@@ -242,6 +259,48 @@ export default function PathsTable() {
 
   const handleSelectAllSubjectChange = (value: string) => {};
 
+  function timeLeft(targetDate: Date | string) {
+    const now = moment();
+    const end = moment(targetDate);
+    const duration = moment.duration(end.diff(now));
+
+    const days = Math.floor(duration.asDays());
+    const hours = Math.floor(duration.asHours() % 24);
+    const minutes = Math.floor(duration.asMinutes() % 60);
+
+    if (days > 0)
+      return `${days} ${getRussianPlural(
+        days,
+        "день",
+        "дня",
+        "дней"
+      )} осталось`;
+    if (hours > 0)
+      return `${hours} ${getRussianPlural(
+        hours,
+        "час",
+        "часа",
+        "часов"
+      )} осталось`;
+    if (minutes > 0)
+      return `${minutes} ${getRussianPlural(
+        minutes,
+        "минута",
+        "минуты",
+        "минут"
+      )} осталось`;
+    return `Время истекло`;
+  }
+
+  function getRussianPlural(n: number, one: string, few: string, many: string) {
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+
+    if (mod10 === 1 && mod100 !== 11) return one;
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
+    return many;
+  }
+
   useEffect(() => {
     setCurrentPage(1);
 
@@ -250,7 +309,7 @@ export default function PathsTable() {
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
-      <div className="">
+      {/* <div className="">
         {tableData.map((item, index) => (
           <div className=" px-5 py-3 flex flex-col items-start gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400 max-w-full overflow-x-auto">
             <span className="text-gray-800  dark:text-white/90 font-normal text-xl"> {item.product.name} {"-"} {item.name}</span>
@@ -275,9 +334,7 @@ export default function PathsTable() {
                       <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
                         {author.expired} gacha
                       </span>
-                      {/* <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                        {author.role}
-                      </span> */}
+                      
                     </div>
                   </div>
 
@@ -296,174 +353,116 @@ export default function PathsTable() {
             </div>
           </div>
         ))}
+      </div> */}
+      <div className="px-5 py-3 inline-flex gap-4 ">
+        <Button
+          size="sm"
+          variant="outline"
+          endIcon={<FileIcon className="size-5 fill-white" />}
+        >
+          Результаты обработка
+        </Button>
+
+        <p className="inline-flex gap-2 items-center px-5 py-3 font-medium text-gray-500 text-start text-sm dark:text-gray-400">
+          <FiClock className="text-brand-500 dark:text-brand-400 size-8 inline" />
+          Обработа начата :{" "}
+          {moment().subtract(25, "hour").format("DD.MM.YYYY HH:mm")}
+        </p>
       </div>
-      {/* <div className="max-w-full overflow-x-auto">
-        <div className="px-5 py-3  flex flex-row justify-between items-center border-b border-gray-100 dark:border-white/[0.05]">
-          <div className="flex flex-row items-center gap-2 text-theme-sm font-medium text-gray-500 text-start  dark:text-gray-400">
-            <span>Ko'rsatish</span>
+      <Table>
+        {/* Table Header */}
+        <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
+          <TableRow>
+            <TableCell
+              isHeader
+              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+            >
+              Xodimlar
+            </TableCell>
+            <TableCell
+              isHeader
+              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+            >
+              Срок
+            </TableCell>
+            <TableCell
+              isHeader
+              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+            >
+              Состояние
+            </TableCell>
 
-            <Select
-              options={options}
-              onChange={handleSelectChange}
-              className="dark:bg-dark-900"
-              defaultValue="5"
-            />
-          </div>
-        </div>
-        <Table>
-          <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
-            <TableRow>
-              <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Paths
+            <TableCell
+              isHeader
+              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+            >
+              Срок согласования
+            </TableCell>
+          </TableRow>
+        </TableHeader>
+
+        {/* Table Body */}
+        <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
+          {statictableData.map((order, index) => (
+            <TableRow key={index}>
+              <TableCell className="px-5 py-4 sm:px-6 text-start">
+                <div className="flex items-center gap-4">
+                  {order.status == "success" ? (
+                    <FiCheckCircle className="text-green-500 dark:text-green-400 size-8 inline" />
+                  ) : order.status == "panding" ? (
+                    <FiArrowRightCircle className="text-blue-500 dark:text-blue-400 size-8 inline" />
+                  ) : (
+                    <ErrorHexaIcon className="text-red-500 dark:text-red-400 size-8 inline" />
+                  )}
+                  <div>
+                    <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                      {order.name}
+                    </span>
+                    <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+                      {order.role}
+                    </span>
+                  </div>
+                </div>
               </TableCell>
-              <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Added
+              <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                {order.time}
+              </TableCell>
+
+              <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                {order.status == "success"
+                  ? "Согласован"
+                  : order.status == "panding"
+                  ? "На исполнении"
+                  : "Не согласован"}
               </TableCell>
 
               <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                className={
+                  (timeLeft(order.expired) == "Время истекло" &&
+                  order.status == "panding"
+                    ? "text-red-500 dark:text-red-40"
+                    : "text-gray-500 dark:text-gray-40") +
+                  "px-4 py-3  text-start text-theme-sm  flex-col  gap-2  justify-center "
+                }
               >
-                Status
-              </TableCell>
-              <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Amal
+                {moment(order.expired).format("DD.MM.YYYY HH:mm")}{" "}
+                {order.status == "success" || order.status == "canceled"
+                  ? ""
+                  : " / " + timeLeft(order.expired)}
               </TableCell>
             </TableRow>
-          </TableHeader>
-
-          <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-            {currentItems.map((order, index) => (
-              <TableRow key={index}>
-                <TableCell className="px-5 py-4 sm:px-6 text-start">
-                  <div className="flex items-center gap-3">
-                    {/* <div className="w-10 h-10 overflow-hidden rounded-sm ">
-                        <img
-                          width={40}
-                          height={40}
-                          src={order.image}
-                          alt={order.name}
-                        />
-                      </div> 
-                    <div>
-                      <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {order.name}
-                      </span>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {Moment(order.createdAt).format("MMMM DD, yyyy")}
-                </TableCell>
-
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  <Badge
-                    size="sm"
-                    color={
-                      order.status === "Active"
-                        ? "success"
-                        : order.status === "Pending"
-                        ? "warning"
-                        : "error"
-                    }
-                  >
-                    {order.status}
-                  </Badge>
-                </TableCell>
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 flex gap-2  flex-row items-center">
-                  <Button
-                    size="mini"
-                    variant="outline"
-                    className="text-xl fill-gray-500 dark:fill-gray-400"
-                    onClick={() => {
-                      setPath({
-                        name: order.name,
-                        image: "",
-                      });
-                      openModal();
-                    }}
-                  >
-                    <PencilIcon></PencilIcon>
-                  </Button>
-
-                  <Button
-                    size="mini"
-                    variant="outline"
-                    onClick={async () => {}}
-                  >
-                    <TrashBinIcon className="text-xl fill-gray-500 dark:fill-gray-400"></TrashBinIcon>
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div> */}
-
-      {/* <div className="px-5 py-3 gap-3 flex flex-col md:flex-row justify-between md:items-center border-t border-gray-100 dark:border-white/[0.05] text-theme-sm font-medium text-gray-500  dark:text-gray-400">
-        <div className="flex flex-row items-center gap-2  text-start  ">
-          <Button
-            size="sm"
-            variant="outline"
-            className="w-10 h-10"
-            disabled={currentPage === 1}
-            onClick={goToPreviousPage}
-          >
-            <ArrowRightIcon className="rotate-180 fill-gray-500  dark:fill-gray-400 scale-200" />
-          </Button>
-
-          {[...Array(maxPage)].map((_, i) => (
-            <Button
-              size="sm"
-              variant={currentPage === i + 1 ? "primary" : "outline"}
-              className="w-10 h-10"
-              disabled={false}
-              key={i}
-              onClick={() => {
-                currentPage !== i + 1 && setCurrentPage(i + 1);
-              }}
-            >
-              {i + 1}
-            </Button>
           ))}
-
-          <Button
-            size="sm"
-            variant="outline"
-            className="w-10 h-10"
-            disabled={currentPage === maxPage}
-            onClick={goToNextPage}
-          >
-            <ArrowRightIcon className=" fill-gray-500  dark:fill-gray-400 scale-200" />
-          </Button>
-        </div>
-        <div>
-          <div>
-            {" "}
-            {(currentPage - 1) * +optionValue + 1} dan{" "}
-            {Math.min(statictableData.length, currentPage * +optionValue)}{" "}
-            gacha, {statictableData.length} ta hujjatlar aylanmasi
-          </div>
-        </div>
-      </div> */}
+        </TableBody>
+      </Table>
 
       <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Edit Path
+              Edit Access
             </h4>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
-              Update Path with full details.
+              Update Access with full details.
             </p>
           </div>
           <form className="flex flex-col">
@@ -485,7 +484,7 @@ export default function PathsTable() {
                   <Select
                     options={all_Subject_options}
                     className="dark:bg-dark-900"
-                    defaultValue={`${Path.section_id}`}
+                    defaultValue={`${Access.section_id}`}
                     onChange={() => {}}
                   />
                 </div>
@@ -494,10 +493,10 @@ export default function PathsTable() {
                   <Label>Name</Label>
                   <Input
                     type="text"
-                    value={Path.name}
+                    value={Access.name}
                     onChange={(e) =>
-                      setPath({
-                        ...Path,
+                      setAccess({
+                        ...Access,
                         name: e.target.value,
                       })
                     }
