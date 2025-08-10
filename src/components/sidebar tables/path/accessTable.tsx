@@ -375,26 +375,26 @@ export default function AccesssTable() {
           <TableRow>
             <TableCell
               isHeader
-              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+              className="px-5 py-3 font-bold text-gray-800 dark:text-white/90 text-start text-theme-xs "
             >
-              Xodimlar
+              Руководства
             </TableCell>
             <TableCell
               isHeader
-              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+              className="px-5 py-3 font-bold text-gray-800 dark:text-white/90 text-start text-theme-xs "
             >
               Срок
             </TableCell>
             <TableCell
               isHeader
-              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+              className="px-5 py-3 font-bold text-gray-800 dark:text-white/90 text-start text-theme-xs "
             >
               Состояние
             </TableCell>
 
             <TableCell
               isHeader
-              className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+              className="px-5 py-3 font-bold  text-gray-800 dark:text-white/90 text-start text-theme-xs "
             >
               Срок согласования
             </TableCell>
@@ -415,7 +415,7 @@ export default function AccesssTable() {
                     <ErrorHexaIcon className="text-red-500 dark:text-red-400 size-8 inline" />
                   )}
                   <div>
-                    <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                    <span className="block font-medium text-gray-800 dark:text-white/90 text-theme-sm ">
                       {order.name}
                     </span>
                     <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
@@ -442,7 +442,7 @@ export default function AccesssTable() {
                   order.status == "panding"
                     ? "text-red-500 dark:text-red-40"
                     : "text-gray-500 dark:text-gray-40") +
-                  "px-4 py-3  text-start text-theme-sm  flex-col  gap-2  justify-center "
+                  "px-5 py-3  text-start text-theme-sm  flex-col  gap-2  justify-center "
                 }
               >
                 {moment(order.expired).format("DD.MM.YYYY HH:mm")}{" "}

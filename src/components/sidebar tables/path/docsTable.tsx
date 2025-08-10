@@ -6,7 +6,15 @@ import {
   TableRow,
 } from "../../ui/table";
 
+import "./index.css";
+
 import Moment from "moment";
+import {
+  RPProvider,
+  RPDefaultLayout,
+  RPPages,
+  RPConfig,
+} from "@pdf-viewer/react";
 
 import Badge from "../../ui/badge/Badge";
 import Button from "../../ui/button/Button";
@@ -311,19 +319,27 @@ export default function DocsTable() {
     },
     {
       name: "Устав",
-      exist: false,
+      exist: true,
+      by: {
+        name: "Sherzod M",
+        role: "Operator",
+      },
     },
     {
       name: "Учредительская соглашения",
       exist: true,
       by: {
-        name: "Malika T.L",
+        name: "Sherzod M",
         role: "Operator",
       },
     },
     {
       name: "Залог",
-      exist: false,
+      exist: true,
+      by: {
+        name: "Sherzod M",
+        role: "Operator",
+      },
     },
   ];
   return (
@@ -373,14 +389,14 @@ export default function DocsTable() {
         </div>
       ))}
 
-      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
+      <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[800px] m-4">
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
               Документ
             </h4>
           </div>
-          <form className="flex flex-col">
+          {/* <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2"></div>
             </div>
@@ -392,7 +408,22 @@ export default function DocsTable() {
                 Save
               </Button>
             </div>
-          </form>
+          </form> */}
+
+          {/* <RPConfig>
+            <RPProvider src="https://www.princexml.com/samples/textbook/somatosensory.pdf" >
+              <RPDefaultLayout style={{ height: "420px" }} >
+                <RPPages />
+              </RPDefaultLayout>
+            </RPProvider>
+          </RPConfig> */}
+
+          <iframe
+            src="document.pdf"
+            className="min-h-[400px] min-w-[700px]"
+            title="PDF Viewer"
+            style={{ width: "100%", height: "100%", border: "none" }}
+          />
         </div>
       </Modal>
     </div>

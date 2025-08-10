@@ -15,21 +15,17 @@ import Select from "../../components/form/Select";
 import MultiSelect from "../../components/form/MultiSelect";
 import AccesssTable from "../../components/sidebar tables/path/accessTable";
 import DocsTable from "../../components/sidebar tables/path/docsTable";
-
+import InfoTable from "../../components/sidebar tables/path/infoTable";
+import AppTable from "../../components/sidebar tables/path/appTable";
 
 export default function PathsPage() {
   const { isOpen, openModal, closeModal } = useModal();
-  
-  
 
- 
+  const [selected, setSelected] = useState<"1" | "2" | "3" | "4" >(
+    "1"
+  );
 
-  
-
-
-  const [selected, setSelected] = useState<"1" | "2" | "3" | "4" | "5" | "6">("1");
-
-  const getButtonClass = (option: "1" | "2" | "3" | "4" | "5" | "6") =>
+  const getButtonClass = (option: "1" | "2" | "3" | "4" ) =>
     selected === option
       ? "shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800"
       : "text-gray-500 dark:text-gray-400";
@@ -38,13 +34,17 @@ export default function PathsPage() {
     let content;
 
     switch (selected) {
+      case "1":
+        content = <AppTable />;
+        break;
+      case "2":
+        content = <InfoTable />;
+        break;
       case "3":
         content = <AccesssTable />;
         break;
 
-
-
-         case "5":
+      case "4":
         content = <DocsTable />;
         break;
 
@@ -76,7 +76,6 @@ export default function PathsPage() {
                   Yuklash
                 </Button>
               </div>
-          
             </div>
           }
         >
@@ -110,38 +109,37 @@ export default function PathsPage() {
               Обработка (2)
             </button>
 
-            <button
+            {/* <button
               onClick={() => setSelected("4")}
               className={`px-3 py-2 font-medium  rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
                 "4"
               )}`}
             >
               Категории
-            </button>
+            </button> */}
 
-             <button
-              onClick={() => setSelected("5")}
+            <button
+              onClick={() => setSelected("4")}
               className={`px-3 py-2 font-medium  rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
-                "5"
+                "4"
               )}`}
             >
               Документы (4)
             </button>
-  
-            <button
+
+            {/* <button
               onClick={() => setSelected("6")}
               className={`px-3 py-2 font-medium  rounded-md text-theme-sm hover:text-gray-900   dark:hover:text-white ${getButtonClass(
                 "6"
               )}`}
             >
               Доступ (4)
-            </button>
-          </div>
+            </button>*/}
+          </div> 
 
           {body()}
         </ComponentCard>
       </div>
-   
     </>
   );
 }

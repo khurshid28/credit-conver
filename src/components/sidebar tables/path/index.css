@@ -1,0 +1,18 @@
+.watermark,
+.rpv-core__viewer::before,
+.rpv-core__page-layer .watermark {
+  display: none !important;
+  background: none !important;
+  content: none !important;
+}
+
+
+.react-pdf-watermark-hide {
+  position: absolute;
+  top: 100px; /* yozuv joylashgan koordinata */
+  left: 50px;
+  width: 200px;
+  height: 50px;
+  background-color: white; /* PDF foniga mos rang */
+  pointer-events: none;
+}
