@@ -16,3 +16,60 @@
   background-color: white; /* PDF foniga mos rang */
   pointer-events: none;
 }
+
+
+
+.rc-rate-star-full {
+  color: gold !important;
+}
+.rc-rate-star-half {
+  color: gold !important;
+}
+/* .rc-rate-star-zero {
+  color: lightgray !important;
+} */
+
+
+.rc-rate {
+    font-size: 32px;
+  }
+
+
+  .rc-rate {
+  white-space: nowrap; /* Hammasini bitta qatorda tutadi */
+}
+
+.rc-rate-star {
+  display: inline-block !important; /* Flex gap o‘rniga inline-block ishlasin */
+}
+
+
+.rc-rate-custom {
+  white-space: nowrap;
+  display: inline-flex;
+  gap: 8px; /* Yulduzlar orasidagi masofa */
+}
+
+
+.react-rater-star {
+  font-size: 50px; /* Hamma yulduzlar kattalashadi */
+  padding: 0px 8px;
+}
+
+
+
+.react-rater-star.is-active {
+  color: gold !important;
+}
+
+/* Hover qilinganda */
+.react-rater-star.is-active-half,
+.react-rater-star.is-hover {
+  color: gold !important;
+}
+
+/* Bo‘sh yulduz */
+.react-rater-star {
+  color: lightgray;
+  transition: color 0.2s ease;
+}

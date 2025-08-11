@@ -27,6 +27,10 @@ import {
   DocsIcon,
   FileIcon,
   ErrorHexaIcon,
+  EditIcon,
+  CheckLineIcon,
+  ErrorIcon,
+  ArrowUpIcon,
 } from "../../../icons";
 import { useEffect, useState } from "react";
 import { useModal } from "../../../hooks/useModal";
@@ -45,13 +49,22 @@ import {
   FiCheck,
   FiCheckCircle,
   FiClock,
+  FiEdit,
+  FiEdit2,
+  FiEdit3,
 } from "react-icons/fi";
 import moment from "moment";
-
+import TextAreaInput from "../../form/form-elements/TextAreaInput";
+import TextArea from "../../form/input/TextArea";
+import Rate from "rc-rate";
+import Rater from "react-rater";
+import "react-rater/lib/react-rater.css";
 export interface Access {
+  id?: number;
   name?: string;
   image?: string;
   section_id?: string;
+  rate: number;
 }
 
 interface Order {
@@ -119,7 +132,7 @@ const statictableData: Order[] = [
   },
 
   {
-    id: 2,
+    id: 3,
     name: "Jasur Kamolov",
     role: "Rais O'rinbosari",
     expired: moment().add(5, "hours").toDate(),
@@ -138,7 +151,7 @@ const statictableData: Order[] = [
   },
 
   {
-    id: 2,
+    id: 4,
     name: "Farhod Diyorov",
     role: "Korporativ mijozlar bilan ishlash D.boshlig'i",
     expired: moment().subtract(1, "hour").toDate(),
@@ -192,14 +205,10 @@ export default function AccesssTable() {
     name: "",
     image: "",
     section_id: "",
+    rate: 0,
   };
   let [Access, setAccess] = useState<Access>(emptyAccess);
 
-  const options = [
-    { value: "5", label: "5" },
-    { value: "10", label: "10" },
-    { value: "20", label: "20" },
-  ];
   let [optionValue, setoptionValue] = useState("5");
 
   const handleSelectChange = (value: string) => {
@@ -238,24 +247,17 @@ export default function AccesssTable() {
   };
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
 
-  const multiOptions = [
-    { value: "Group 1", text: "Group 1", selected: false },
-    { value: "Group 2", text: "Group 2", selected: false },
-    { value: "Group 3", text: "Group 3", selected: false },
+  const options = [
+    { label: "1 soat", value: "1h" },
+    { label: "2 soat", value: "2h" },
+    { label: "3 soat", value: "3h" },
+    { label: "12 soat", value: "12h" },
+    { label: "1 kun", value: "1d" },
+    { label: "2 kun", value: "2d" },
+      { label: "3 kun", value: "3d" },
   ];
 
-  const Subject_options = [
-    { value: "All subjects", label: "All Subject" },
-    { value: "Subject 1", label: "Subject 1" },
-    { value: "Subject 2", label: "Subject 2" },
-    { value: "Subject 3", label: "Subject 3" },
-  ];
-
-  const all_Subject_options = [
-    { value: "Subject 1", label: "Subject 1" },
-    { value: "Subject 2", label: "Subject 2" },
-    { value: "Subject 3", label: "Subject 3" },
-  ];
+  const [timer, setTimer] = useState<string | null>();
 
   const handleSelectAllSubjectChange = (value: string) => {};
 
@@ -398,12 +400,19 @@ export default function AccesssTable() {
             >
               Срок согласования
             </TableCell>
+
+            <TableCell
+              isHeader
+              className="px-5 py-3 font-bold  text-gray-800 dark:text-white/90 text-start text-theme-xs "
+            >
+              Подписания
+            </TableCell>
           </TableRow>
         </TableHeader>
 
         {/* Table Body */}
         <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-          {statictableData.map((order, index) => (
+          {tableData.map((order, index) => (
             <TableRow key={index}>
               <TableCell className="px-5 py-4 sm:px-6 text-start">
                 <div className="flex items-center gap-4">
@@ -450,6 +459,32 @@ export default function AccesssTable() {
                   ? ""
                   : " / " + timeLeft(order.expired)}
               </TableCell>
+
+              <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                {order.status == "panding" || order.status == "canceled" ? (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      setAccess({
+                        ...emptyAccess,
+                        id: order.id,
+                      });
+                      openModal();
+                      setTimer(null);
+                    }}
+                    endIcon={
+                      <div className="flex flex-row item-center h-full gap-2">
+                        <PencilIcon className="size-5 fill-white" />{" "}
+                      </div>
+                    }
+                  >
+                    подписать
+                  </Button>
+                ) : (
+                  " "
+                )}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -459,67 +494,142 @@ export default function AccesssTable() {
         <div className="relative w-full p-4 overflow-y-auto bg-white no-scrollbar rounded-3xl dark:bg-gray-900 lg:p-11">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-              Edit Access
+              Подписания
             </h4>
-            <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
+            {/* <p className="mb-6 text-sm text-gray-500 dark:text-gray-400 lg:mb-7">
               Update Access with full details.
-            </p>
+            </p> */}
           </div>
           <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
-                <div>
-                  <MultiSelect
-                    label="Groups"
-                    options={multiOptions}
-                    onChange={(values) => setSelectedValues(values)}
-                  />
-                  <p className="sr-only">
-                    Selected Values: {selectedValues.join(", ")}
-                  </p>
-                </div>
-
-                <div>
-                  <Label>Subjects</Label>
-                  <Select
-                    options={all_Subject_options}
-                    className="dark:bg-dark-900"
-                    defaultValue={`${Access.section_id}`}
-                    onChange={() => {}}
-                  />
-                </div>
-
-                <div>
-                  <Label>Name</Label>
-                  <Input
-                    type="text"
+                <div className="col-span-2">
+                  <Label>Описания</Label>
+                  <TextArea
                     value={Access.name}
-                    onChange={(e) =>
+                    className="w-full flex "
+                    onChange={(value) =>
                       setAccess({
                         ...Access,
-                        name: e.target.value,
+                        name: value,
                       })
                     }
+                    rows={8}
                   />
                 </div>
 
-                <div>
-                  <Label>Image</Label>
-                  <FileInput
-                    onChange={handleFileChange}
-                    className="custom-class"
+                <div className="pt-8 col-span-2">
+                  <Label className="flex flex-row gap-4 items-center">
+                    Оценка для оператора{" "}
+                    <p className="text-gray-500 text-xl dark:text-gray-400">
+                      |
+                    </p>
+                    <div className="inline-flex  flex-row gap-2 items-center ">
+                      <UserCircleIcon className="text-brand-500 dark:text-brand-400 size-5 " />
+                      <div>
+                        <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                          Sherzod M
+                        </span>
+                        <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+                          Operator
+                        </span>
+                      </div>
+                    </div>
+                  </Label>
+                  <Rater
+                    interactive={true}
+                    rating={Access.rate}
+                    total={5}
+                    onRating={(v) => {
+                      setAccess({
+                        ...Access,
+                        rate: v,
+                      });
+                    }}
                   />
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-3 px-2 mt-6 lg:justify-end">
-              <Button size="sm" variant="outline" onClick={closeModal}>
-                Close
+            <div className="flex items-center gap-3 px-2 mt-6 ">
+              <Button
+                size="sm"
+                variant="outline"
+                startIcon={<FiClock className="size-5 fill-white" />}
+                onClick={() => {
+                  if (!timer) {
+                    setTimer( "1h");
+                  } else {
+                    setTimer( null);
+                  }
+                  
+                }}
+              >
+                включить ожидания
               </Button>
-              <Button size="sm" onClick={handleAdding}>
-                Saqlash
+              <Button
+                size="sm"
+                variant="error"
+                startIcon={<CloseIcon className="size-5 fill-white" />}
+                onClick={() => {
+                  closeModal();
+                  settableData(
+                    tableData.map((item) => {
+                      if (item.id == Access.id) {
+                        return {
+                          ...item,
+                          status: "canceled",
+                        };
+                      } else {
+                        return item;
+                      }
+                    })
+                  );
+                  setAccess(emptyAccess);
+                }}
+              >
+                не согласен
+              </Button>
+              <Button
+                size="sm"
+                startIcon={<CheckLineIcon className="size-5 text-white" />}
+                onClick={() => {
+                  closeModal();
+                  settableData(
+                    tableData.map((item) => {
+                      if (item.id == Access.id) {
+                        return {
+                          ...item,
+                          status: "success",
+                        };
+                      } else {
+                        return item;
+                      }
+                    })
+                  );
+                  setAccess(emptyAccess);
+                }}
+              >
+                подписать
               </Button>
             </div>
+
+            {timer && (
+              <div className="flex gap-2 pt-4  px-2">
+                {options.map((opt) => (
+                  <Button
+                    key={opt.value}
+                    onClick={() => {
+                      closeModal();
+                      setTimer(opt.value);
+                    }}
+                    variant={ timer === opt.value ? "primary"  : "outline"}
+                    className={`px-4 py-2 rounded-full border `}
+                  >
+                    {opt.label}
+                  </Button>
+                ))}
+              </div>
+            )}
           </form>
         </div>
       </Modal>
