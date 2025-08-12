@@ -335,7 +335,7 @@ export default function AccesssTable() {
       (item) => item.id == Access?.id
     );
     return (
-      <div className="flex items-center gap-4 py-4  border-b-1 mb-4">
+      <div className="flex items-center gap-4 py-4   mb-4 border-b border-gray-200  dark:border-white/[0.05] mx-2">
         {order?.status == "success" ? (
           <FiCheckCircle className="text-green-500 dark:text-green-400 size-8 inline" />
         ) : order?.status == "panding" ? (

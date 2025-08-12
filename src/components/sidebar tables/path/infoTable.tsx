@@ -68,7 +68,7 @@ export default function InfoTable() {
 
   return (
     <div className="relative  px-5 py-3  inline-flex flex-col rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
-      <div className="pb-2  font-medium text-gray-500 text-start text-md dark:text-gray-400  border-b border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
+      <div className="pb-2  font-medium text-gray-500 text-start text-md dark:text-gray-400  border-b border-gray-200  dark:border-white/[0.05] ">
         Sardor Shirinliklari Mchj
       </div>
       <div className="pt-2  font-medium text-gray-500 text-start text-md dark:text-gray-400">
