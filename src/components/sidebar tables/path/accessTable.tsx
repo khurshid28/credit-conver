@@ -330,6 +330,32 @@ export default function AccesssTable() {
     settableData(statictableData);
   }, [optionValue]);
 
+  function statusUi() {
+    let order: Order | undefined = tableData.find(
+      (item) => item.id == Access?.id
+    );
+    return (
+      <div className="flex items-center gap-4 py-4  border-b-1 mb-4">
+        {order?.status == "success" ? (
+          <FiCheckCircle className="text-green-500 dark:text-green-400 size-8 inline" />
+        ) : order?.status == "panding" ? (
+          <FiArrowRightCircle className="text-blue-500 dark:text-blue-400 size-8 inline" />
+        ) : order?.status == "canceled" ? (
+          <ErrorHexaIcon className="text-red-500 dark:text-red-400 size-8 inline" />
+        ) : (
+          <FiClock className="text-yellow-500 dark:text-yellow-400 size-8 inline" />
+        )}
+        <div>
+          <span className="block font-medium text-gray-800 dark:text-white/90 text-theme-sm ">
+            {order?.name}
+          </span>
+          <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+            {order?.role}
+          </span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       {/* <div className="">
@@ -386,11 +412,19 @@ export default function AccesssTable() {
           Результаты обработка
         </Button>
 
-        <p className="inline-flex gap-2 items-center px-5 py-3 font-medium text-gray-500 text-start text-sm dark:text-gray-400">
-          <FiClock className="text-yellow-500 dark:text-yellow-400 size-8 inline" />
-          Обработа начата :{" "}
-          {moment().subtract(25, "hour").format("DD.MM.YYYY HH:mm")}
-        </p>
+        {tableData.every((item) => item.status == "success") ? (
+          <p className="inline-flex gap-2 items-center px-5 py-3 font-medium text-gray-500 text-start text-sm dark:text-gray-400">
+            <FiCheckCircle className="text-green-500 dark:text-green-400 size-8 inline" />
+            Обработа начата :{" "}
+            {moment().subtract(25, "hour").format("DD.MM.YYYY HH:mm")}
+          </p>
+        ) : (
+          <p className="inline-flex gap-2 items-center px-5 py-3 font-medium text-gray-500 text-start text-sm dark:text-gray-400">
+            <FiClock className="text-yellow-500 dark:text-yellow-400 size-8 inline" />
+            Обработа начата :{" "}
+            {moment().subtract(25, "hour").format("DD.MM.YYYY HH:mm")}
+          </p>
+        )}
       </div>
       <Table>
         {/* Table Header */}
@@ -494,36 +528,30 @@ export default function AccesssTable() {
               </TableCell>
 
               <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {order.status == "panding" ||
-                order.status == "canceled" ||
-                order.status == "timer" ? (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => {
-                      setAccess({
-                        ...emptyAccess,
-                        id: order.id,
-                      });
-                      openModal();
-                      let data = tableData.find((item) => item.id == order.id);
-                      if (data?.timer) {
-                        setTimer(data?.timer);
-                      } else {
-                        setTimer(null);
-                      }
-                    }}
-                    endIcon={
-                      <div className="flex flex-row item-center h-full gap-2">
-                        <PencilIcon className="size-5 fill-white" />{" "}
-                      </div>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => {
+                    setAccess({
+                      ...emptyAccess,
+                      id: order.id,
+                    });
+                    openModal();
+                    let data = tableData.find((item) => item.id == order.id);
+                    if (data?.timer) {
+                      setTimer(data?.timer);
+                    } else {
+                      setTimer(null);
                     }
-                  >
-                    подписать
-                  </Button>
-                ) : (
-                  " "
-                )}
+                  }}
+                  endIcon={
+                    <div className="flex flex-row item-center h-full gap-2">
+                      <PencilIcon className={"size-5"} />{" "}
+                    </div>
+                  }
+                >
+                  подписать
+                </Button>
               </TableCell>
             </TableRow>
           ))}
@@ -540,6 +568,8 @@ export default function AccesssTable() {
               Update Access with full details.
             </p> */}
           </div>
+          {statusUi()}
+
           <form className="flex flex-col">
             <div className="px-2 overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 lg:grid-cols-2">
