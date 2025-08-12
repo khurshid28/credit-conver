@@ -21,13 +21,13 @@ export default function AuthLayout({
                 <img
                   width={120}
                   height={48}
-                  className="rounded-4xl"
-                  src="/images/logo/logo-icon.webp"
+                  className="rounded-4xl scale-150"
+                  src="/images/logo/logo-icon.png"
                   alt="Logo"
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                 Hayot Kredit tizimi
+                 ApexBank Kredit tizimi
               </p>
             </div>
           </div>

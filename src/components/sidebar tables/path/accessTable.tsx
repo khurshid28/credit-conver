@@ -74,7 +74,8 @@ interface Order {
   role: string;
   expired: Date;
   docs?: AuthorDoc[];
-  status: "success" | "panding" | "canceled";
+  timer?: string;
+  status: "success" | "panding" | "canceled" | "timer";
 }
 
 interface Author {}
@@ -187,6 +188,26 @@ const statictableData: Order[] = [
       },
     ],
   },
+
+  {
+    id: 6,
+    name: "Javohir Saidov",
+    role: "Korporativ mijozlar bilan ishlash Bo'lim boshlig'i",
+    expired: moment().subtract(1, "hour").toDate(),
+    status: "timer",
+    timer: "3d",
+    time: "3 kun",
+    docs: [
+      {
+        id: 4,
+        name: "Pul aylanmasi",
+      },
+      {
+        id: 1,
+        name: "Firma Guvohnomasi",
+      },
+    ],
+  },
 ];
 
 export default function AccesssTable() {
@@ -254,7 +275,7 @@ export default function AccesssTable() {
     { label: "12 soat", value: "12h" },
     { label: "1 kun", value: "1d" },
     { label: "2 kun", value: "2d" },
-      { label: "3 kun", value: "3d" },
+    { label: "3 kun", value: "3d" },
   ];
 
   const [timer, setTimer] = useState<string | null>();
@@ -366,7 +387,7 @@ export default function AccesssTable() {
         </Button>
 
         <p className="inline-flex gap-2 items-center px-5 py-3 font-medium text-gray-500 text-start text-sm dark:text-gray-400">
-          <FiClock className="text-brand-500 dark:text-brand-400 size-8 inline" />
+          <FiClock className="text-yellow-500 dark:text-yellow-400 size-8 inline" />
           Обработа начата :{" "}
           {moment().subtract(25, "hour").format("DD.MM.YYYY HH:mm")}
         </p>
@@ -420,8 +441,10 @@ export default function AccesssTable() {
                     <FiCheckCircle className="text-green-500 dark:text-green-400 size-8 inline" />
                   ) : order.status == "panding" ? (
                     <FiArrowRightCircle className="text-blue-500 dark:text-blue-400 size-8 inline" />
-                  ) : (
+                  ) : order.status == "canceled" ? (
                     <ErrorHexaIcon className="text-red-500 dark:text-red-400 size-8 inline" />
+                  ) : (
+                    <FiClock className="text-yellow-500 dark:text-yellow-400 size-8 inline" />
                   )}
                   <div>
                     <span className="block font-medium text-gray-800 dark:text-white/90 text-theme-sm ">
@@ -442,26 +465,38 @@ export default function AccesssTable() {
                   ? "Согласован"
                   : order.status == "panding"
                   ? "На исполнении"
-                  : "Не согласован"}
+                  : order.status == "canceled"
+                  ? "Не согласован"
+                  : "Ожидания" +
+                    (order.timer
+                      ? ` (+${
+                          options.find((item) => item.value == order.timer)
+                            ?.label
+                        })`
+                      : "")}
               </TableCell>
 
               <TableCell
                 className={
                   (timeLeft(order.expired) == "Время истекло" &&
                   order.status == "panding"
-                    ? "text-red-500 dark:text-red-40"
+                    ? "text-red-500 dark:text-red-400"
                     : "text-gray-500 dark:text-gray-40") +
                   "px-5 py-3  text-start text-theme-sm  flex-col  gap-2  justify-center "
                 }
               >
                 {moment(order.expired).format("DD.MM.YYYY HH:mm")}{" "}
-                {order.status == "success" || order.status == "canceled"
+                {order.status == "success" ||
+                order.status == "canceled" ||
+                order.status == "timer"
                   ? ""
                   : " / " + timeLeft(order.expired)}
               </TableCell>
 
               <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                {order.status == "panding" || order.status == "canceled" ? (
+                {order.status == "panding" ||
+                order.status == "canceled" ||
+                order.status == "timer" ? (
                   <Button
                     size="sm"
                     variant="outline"
@@ -471,7 +506,12 @@ export default function AccesssTable() {
                         id: order.id,
                       });
                       openModal();
-                      setTimer(null);
+                      let data = tableData.find((item) => item.id == order.id);
+                      if (data?.timer) {
+                        setTimer(data?.timer);
+                      } else {
+                        setTimer(null);
+                      }
                     }}
                     endIcon={
                       <div className="flex flex-row item-center h-full gap-2">
@@ -553,82 +593,115 @@ export default function AccesssTable() {
             <div className="flex items-center gap-3 px-2 mt-6 ">
               <Button
                 size="sm"
-                variant="outline"
-                startIcon={<FiClock className="size-5 fill-white" />}
+                variant={timer ? "primary" : "outline"}
+                startIcon={<FiClock className="size-5 " />}
                 onClick={() => {
                   if (!timer) {
-                    setTimer( "1h");
+                    setTimer("1h");
                   } else {
-                    setTimer( null);
+                    setTimer(null);
                   }
-                  
                 }}
               >
-                включить ожидания
+                ожидания
               </Button>
-              <Button
-                size="sm"
-                variant="error"
-                startIcon={<CloseIcon className="size-5 fill-white" />}
-                onClick={() => {
-                  closeModal();
-                  settableData(
-                    tableData.map((item) => {
-                      if (item.id == Access.id) {
-                        return {
-                          ...item,
-                          status: "canceled",
-                        };
-                      } else {
-                        return item;
-                      }
-                    })
-                  );
-                  setAccess(emptyAccess);
-                }}
-              >
-                не согласен
-              </Button>
-              <Button
-                size="sm"
-                startIcon={<CheckLineIcon className="size-5 text-white" />}
-                onClick={() => {
-                  closeModal();
-                  settableData(
-                    tableData.map((item) => {
-                      if (item.id == Access.id) {
-                        return {
-                          ...item,
-                          status: "success",
-                        };
-                      } else {
-                        return item;
-                      }
-                    })
-                  );
-                  setAccess(emptyAccess);
-                }}
-              >
-                подписать
-              </Button>
+              {!timer && (
+                <>
+                  <Button
+                    size="sm"
+                    variant="error"
+                    startIcon={<CloseIcon className="size-5 fill-white" />}
+                    onClick={() => {
+                      closeModal();
+                      settableData(
+                        tableData.map((item) => {
+                          if (item.id == Access.id) {
+                            return {
+                              ...item,
+                              status: "canceled",
+                            };
+                          } else {
+                            return item;
+                          }
+                        })
+                      );
+                      setAccess(emptyAccess);
+                    }}
+                  >
+                    не согласен
+                  </Button>
+                  <Button
+                    size="sm"
+                    startIcon={<CheckLineIcon className="size-5 text-white" />}
+                    onClick={() => {
+                      closeModal();
+                      settableData(
+                        tableData.map((item) => {
+                          if (item.id == Access.id) {
+                            return {
+                              ...item,
+                              status: "success",
+                            };
+                          } else {
+                            return item;
+                          }
+                        })
+                      );
+                      setAccess(emptyAccess);
+                    }}
+                  >
+                    подписать
+                  </Button>
+                </>
+              )}
             </div>
 
             {timer && (
-              <div className="flex gap-2 pt-4  px-2">
-                {options.map((opt) => (
+              <>
+                {" "}
+                <div className="flex gap-2 pt-4  px-2">
+                  {options.map((opt) => (
+                    <Button
+                      key={opt.value}
+                      onClick={() => {
+                        // closeModal();
+
+                        setTimer(opt.value);
+                      }}
+                      variant={timer === opt.value ? "primary" : "outline"}
+                      className={`px-4 py-2 rounded-full border `}
+                    >
+                      {opt.label}
+                    </Button>
+                  ))}
+                </div>
+                <div className="flex gap-2 pt-4  px-2 lg:justify-end">
                   <Button
-                    key={opt.value}
+                    size="sm"
+                    startIcon={<CheckLineIcon className="size-5 text-white" />}
                     onClick={() => {
                       closeModal();
-                      setTimer(opt.value);
+
+                      settableData(
+                        tableData.map((item) => {
+                          if (item.id == Access.id) {
+                            return {
+                              ...item,
+                              status: "timer",
+                              timer: timer,
+                            };
+                          } else {
+                            return item;
+                          }
+                        })
+                      );
+                      setAccess(emptyAccess);
                     }}
-                    variant={ timer === opt.value ? "primary"  : "outline"}
-                    className={`px-4 py-2 rounded-full border `}
                   >
-                    {opt.label}
-                  </Button>
-                ))}
-              </div>
+                    включить ожидания
+                  </Button>{" "}
+                </div>
+              </>
             )}
           </form>
         </div>

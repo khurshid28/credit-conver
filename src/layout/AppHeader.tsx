@@ -84,16 +84,24 @@ const AppHeader: React.FC = () => {
           </button>
 
           <Link to="/" className="lg:hidden">
-            <img
+           <div className="inline-flex flex-row items-center gap-2">
+             <img
               className="dark:hidden"
-              src="/images/logo/logo-icon.webp"
+              src="/images/logo/logo-icon.png"
               alt="Logo"
+              width={120}
             />
             <img
               className="hidden dark:block"
-              src="/images/logo/logo-icon.webp"
+              src="/images/logo/logo-icon.png"
               alt="Logo"
+               width={120}
             />
+
+             <p className="text-center font-medium  text-theme-md hover:text-gray-900   dark:text-white">
+                ApexBank
+              </p>
+           </div>
           </Link>
 
           <button

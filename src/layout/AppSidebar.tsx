@@ -417,22 +417,22 @@ const AppSidebar: React.FC = () => {
       >
         <Link to="/">
           {isExpanded || isHovered || isMobileOpen ? (
-            <div className="flex flex-row gap-4 items-center">
+            <div className="flex flex-row gap-2 items-center">
               <img
-                className="dark:hidden  rounded-[24px]"
-                src="/images/logo/logo-icon.webp"
+                className="dark:hidden  rounded-[24px] scale-150"
+                src="/images/logo/logo-icon.png"
                 alt="Logo"
                 // width={150}
-                width={90}
+                width={120}
               />
               <img
-                className="hidden dark:block rounded-[24px]"
-                src="/images/logo/logo-icon.webp"
+                className="hidden dark:block rounded-[24px] scale-150"
+                src="/images/logo/logo-icon.png"
                 alt="Logo"
-                width={90}
+                width={120}
               />
                 <p className="text-center font-medium  text-theme-md hover:text-gray-900   dark:text-white">
-                Hayot Bank
+                ApexBank
               </p>
 
              
@@ -440,10 +440,10 @@ const AppSidebar: React.FC = () => {
           ) : (
             <img
               className="rounded-[9px]"
-              src="/images/logo/logo-icon.webp"
+              src="/images/logo/logo-icon.png"
               alt="Logo"
-              width={36}
-              height={36}
+              width={70}
+              height={70}
             />
           )}
         </Link>
